@@ -7,6 +7,7 @@ html {
 
 body {
 	font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
 	margin-bottom: 90px;
 }
 
@@ -56,51 +57,72 @@ a:active {
 
 /* main conference list view */
 
-ul.years {
-	list-style: none;
-	li.year {
-		width: 100%;
-		display: block;
-		float: left;
-		ul.conferences {
-			list-style: none;
-			li.conference {
-				width: 100%;
-				display: block;
-				float: left;
-				a {
-					cursor: pointer;
-					h3 {
-						display: inline-block;
-					}
-					label {
-						margin-top: -4px;
-					}
-				}
-			}	
+.year {
+	.conference {
+		height: 150px;
+		color: #dddddd;
+		background: #4c49a2;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.title {
+			font-size: 2em;
+			line-height: 1em;
+			font-weight: 300;
+		}
+		.presentations {
+			font-size: 14px;
 		}
 	}
+	.conference:hover {
+		background: #35235d;
+	}
 }
-
 
 /* main conference details */
 
 .presentation {
+	width: 100%;
+	margin-bottom: 20px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #f5f5f5;
 	.title {
-
+      margin-top: 0;
+      line-height: 1.2em;
 	}
 	iframe {
 		width: 100%;
 		min-height: 280px;
 		border: none;
 	}
+    .comments-title {
+		margin-top: 20px;
+		border-bottom: 1px solid #f5f5f5;
+		padding-bottom: 13px;
+    }
 	ul.comments {
 		padding: 0;
 		list-style: none;
 		li.comment {
 			width: 100%;
 			display: block;
-			float: left;
+			padding: 5px;
+		}
+		li:nth-child(even) {
+			background: #f5f5f5;
 		}
 	}
+}
+
+.presentation:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.presentation:last-child {
+	margin: 0;
+	padding: 0;
+	border: none;
 }
