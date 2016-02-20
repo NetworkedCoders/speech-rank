@@ -1,0 +1,23 @@
+[{
+  "year": 2015,
+  "conferences": [{
+    "id": "1",
+    "name": "Confitura",
+    "presentations": 12
+  }, {
+    "id": "2",
+    "name": "Geecon",
+    "presentations": 23
+  }]
+}, {
+  "year": 2014,
+  "conferences": [{
+    "id": "3",
+    "name": "Confitura",
+    "presentations": 10
+  }, {
+    "id": "4",
+    "name": "Geecon",
+    "presentations": 20
+  }]
+}]

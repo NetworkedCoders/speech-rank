@@ -4,3 +4,44 @@ html, body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
 }
+
+header {
+	padding: 20px 0;
+}
+
+footer {
+	p.grey {
+		color:#444444;
+	}
+}
+
+a {
+	color: #444444;
+}
+
+ul.years {
+	list-style: none;
+	li.year {
+		width: 100%;
+		display: block;
+		float: left;
+		ul.conferences {
+			list-style: none;
+			li.conference {
+				width: 100%;
+				display: block;
+				float: left;
+				a {
+					cursor: pointer;
+					h3 {
+						display: inline-block;
+					}
+					label {
+						margin-top: -4px;
+					}
+				}
+				
+			}	
+		}
+	}
+}
