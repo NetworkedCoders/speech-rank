@@ -1,9 +1,11 @@
 package com.github.peggybrown.speechrank;
 
+import lombok.Data;;
+
+@Data
 public class Comment {
 
-    Long id;
-    String author;
-    String twitter;
-    String content;
+    String presentationId;
+    String userId;
+    String commentValue;
 }
