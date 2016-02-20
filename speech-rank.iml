@@ -40,5 +40,6 @@
     <orderEntry type="library" name="Gradle: io.netty:netty-resolver:4.1.0.Beta8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.slf4j:slf4j-simple:1.7.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.ratpack:ratpack-test:1.2.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.javaslang:javaslang:2.0.0-RC4" level="project" />
   </component>
 </module>
