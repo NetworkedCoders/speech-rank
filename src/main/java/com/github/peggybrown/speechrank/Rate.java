@@ -1,7 +1,10 @@
 package com.github.peggybrown.speechrank;
 
-/**
- * Created by ola on 20/02/16.
- */
+import lombok.Data;
+
+@Data
 public class Rate {
+    String userId;
+    String presentationId;
+    int rateValue;
 }
