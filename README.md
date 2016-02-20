@@ -6,3 +6,6 @@ To run front end type:
 npm install gulp
 npm install
 gulp
+
+To run backen:
+./gradlew run

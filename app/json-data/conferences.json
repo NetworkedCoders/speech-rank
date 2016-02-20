@@ -1,22 +1,22 @@
 [{
   "year": 2015,
   "conferences": [{
-    "_id": "r4-434d34-d434-343-dx3",
+    "id": "1",
     "name": "Confitura",
     "presentations": 12
   }, {
-    "_id": "r4-43sdf4-d434-343-dx3",
+    "id": "2",
     "name": "Geecon",
     "presentations": 23
   }]
 }, {
   "year": 2014,
   "conferences": [{
-    "_id": "r4-434dqa-d434-343-dx3",
+    "id": "3",
     "name": "Confitura",
     "presentations": 10
   }, {
-    "_id": "r4-43sdf4-d4ss-343-dx3",
+    "id": "4",
     "name": "Geecon",
     "presentations": 20
   }]
