@@ -23,7 +23,8 @@ var paths = {
     html: ['index.html'],
     images: ['images/**/'],
     extras: ['.htaccess'],
-    templates: ['templates/**/*.html']
+    templates: ['templates/**/*.html'],
+    json: ['json-data/**/']
 };
 
 // minify, concatenate libs
@@ -68,12 +69,17 @@ gulp.task('copy', function() {
     // Copy templates
     gulp.src(paths.templates, {cwd: bases.application})
         .pipe(gulp.dest(bases.production + 'templates/'));
+
+    // Copy json data
+    gulp.src(paths.json, {cwd: bases.application})
+        .pipe(gulp.dest(bases.production + 'json-data/'));
 });
 
 gulp.task('watchForChanges', function() {
     gulp.watch(bases.application + paths.less, ['styles']);
     gulp.watch(bases.application + 'scripts/**/*.js', ['scripts']);
     gulp.watch(bases.application + '**/*.html', ['copy']);
+    gulp.watch(bases.application + '**/*.json', ['copy']);
 });
 
 gulp.task('default', ['scripts', 'styles', 'copy', 'watchForChanges']);
