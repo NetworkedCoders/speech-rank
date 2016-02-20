@@ -17,9 +17,9 @@ repositories {
 dependencies {
     runtime "org.slf4j:slf4j-simple:1.7.12"
     compile "com.javaslang:javaslang:2.0.0-RC4"
-    compile "org.projectlombok:lombok:1.16.6"
     compile 'com.google.api-client:google-api-client:1.21.0'
     compile 'com.google.apis:google-api-services-youtube:v3-rev162-1.21.0'
+    compile "org.projectlombok:lombok:1.16.6"
 }
 
 mainClassName = "com.github.peggybrown.speechrank.Main"
