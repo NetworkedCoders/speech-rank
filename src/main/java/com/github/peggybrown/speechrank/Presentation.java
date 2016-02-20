@@ -10,7 +10,7 @@ public class Presentation {
     Long id;
     String title;
     String link;
-    Float rate;
+    Float rating;
     List<Comment> comments;
 
 
