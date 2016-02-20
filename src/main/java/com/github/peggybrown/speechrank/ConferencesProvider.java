@@ -3,7 +3,7 @@ package com.github.peggybrown.speechrank;
 import ratpack.handling.Context;
 
 public class ConferencesProvider {
-    static String getConference(String name){
+    static String getConference(String name) {
         return conference;
     }
 
@@ -15,10 +15,10 @@ public class ConferencesProvider {
             "  \"id\": 1,\n" +
             "  \"name\": \"Confitura\",\n" +
             "  \"presentations\": [{\n" +
-            "    \"_id\": \"udsd-dsd-dsadas-e32rr43\",\n" +
+            "    \"id\": \"5\",\n" +
             "    \"title\": \"2015 - Bolesław Dawidowicz - Prezentacja o standardach i protokołach bezpieczeństwa\",\n" +
-            "    \"link\": \"https://www.youtube.com/watch?v=69B5EHznGu8\",\n" +
-            "    \"rate\": 3.5,\n" +
+            "    \"link\": \"https://www.youtube.com/embed/69B5EHznGu8\",\n" +
+            "    \"rating\": 3.5,\n" +
             "    \"comments\": [{\n" +
             "        \"_id\": \"876546-6546g6v456-64v564-kjgu\",\n" +
             "        \"author\": \"Andrzej Bednarz\",\n" +
