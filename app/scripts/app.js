@@ -7,7 +7,7 @@
     .config(config)
     .run(run);
 
-    function config( $urlRouterProvider, $stateProvider ) {
+    function config( $urlRouterProvider, $stateProvider, $sceDelegateProvider ) {
         // redirection to home path
         $urlRouterProvider.when('', '/');
 
@@ -38,6 +38,12 @@
             url: '^*path',
             templateUrl: 'templates/routes/404.html'
         });
+
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'self',
+            'https://www.youtube.com/**',
+            'http://www.youtube.com/**'
+        ]);
     }
 
     function run() {
