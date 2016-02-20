@@ -1,17 +1,1 @@
-package com.github.peggybrown.speechrank;
-
-import ratpack.server.RatpackServer;
-
-public class Main {
-
-	public static void main(String... args) throws Exception {
-		RatpackServer.start(server -> server
-				.handlers(chain -> chain
-						.get(ctx -> ctx.render("Hello World!"))
-						.get(":name", ctx -> ctx.render("Hello >>" + ctx.getPathTokens().get("name") + "<<!"))
-				)
-		);
-	}
-
-
-}
+package com.github.peggybrown.speechrank;import ratpack.handling.Context;import ratpack.server.RatpackServer;import static com.github.peggybrown.speechrank.ConferencesProvider.getConference;import static com.github.peggybrown.speechrank.ConferencesProvider.getConferences;public class Main {    public static void main(String... args) throws Exception {        RatpackServer.start(server -> server                .handlers(chain -> chain                        .get("conferences", ctx -> ctx.render(getConferences()))                        .get("conference/:name", ctx -> {                            ctx.render(getConference(ctx.getPathTokens().get("name")));                        })));    }    private static void getRender(Context ctx, String object) {        ctx.render(object);    }}

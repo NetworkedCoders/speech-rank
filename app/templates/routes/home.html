@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="years">
+				<li class="year" ng-repeat="yearData in yearsArray">
+					<h2>{{yearData.year}}</h2>
+					<ul class="conferences">
+						<li class="conference" ng-repeat="conference in yearData.conferences">
+							<a ui-sref="main.conference({ id: conference.id })">
+								<h3>
+									{{conference.name}}
+									<span class="label label-success">{{conference.presentations}}</span>
+								</h3>
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
     runtime "org.slf4j:slf4j-simple:1.7.12"
+    compile "com.javaslang:javaslang:2.0.0-RC4"
 }
 
 mainClassName = "com.github.peggybrown.speechrank.Main"
