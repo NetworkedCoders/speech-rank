@@ -1,0 +1,23 @@
+{
+  "_id": "r4-434d34-d434-343-dx3",
+  "name": "Confitura",
+  "presentations": [{
+    "_id": "udsd-dsd-dsadas-e32rr43",
+    "title": "2015 - Bolesław Dawidowicz - Prezentacja o standardach i protokołach bezpieczeństwa",
+    "link": "https://www.youtube.com/watch?v=69B5EHznGu8",
+    "rate": 3.5,
+    "comments": [{
+        "_id": "876546-6546g6v456-64v564-kjgu",
+        "author": "Andrzej Bednarz",
+        "twitter": "bednarz_andrzej",
+        "content": "very nice!"
+      }, {
+        "_id": "876546-54dssv456-64v56l-kjgu ",
+        "author": "Ola Kunysz",
+        "twitter": "OlaWaliczek",
+        "content": "very good!"
+      }
+
+    ]
+  }]
+}
