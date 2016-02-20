@@ -1,7 +1,7 @@
 package com.github.peggybrown.speechrank;
 
 
-import java.util.List;
+import javaslang.collection.List;
 
 public class Conference {
 
