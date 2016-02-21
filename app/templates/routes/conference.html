@@ -7,13 +7,16 @@
 		</div>
 	</div>	
 	<div class="row">
+		<div class="col-md-12" ng-show="conference.presentations.length == 0">
+			<h3>No presentations here yet.</h3>
+		</div>
 		<div class="presentation" ng-repeat="presentation in conference.presentations">
 			<div class="col-md-5">
 				<iframe ng-src="{{presentation.link}}" frameborder="0" allowfullscreen></iframe>
 			</div>
 			<div class="col-md-7">
 				<h3 class="title">{{presentation.title}}</h3>
-				<p>Presentation rating: <span class="label label-success">{{presentation.rating}}</span> rate presentation
+				<p>Presentation rating: <span class="label label-success">{{presentation.rating | number:1}}</span> rate presentation
 					<span class="rating" star-directive>
 						<i class="icon-star-empty" ng-click="addRating(presentation.id, 1)"></i>
 						<i class="icon-star-empty" ng-click="addRating(presentation.id, 2)"></i>
@@ -31,7 +34,7 @@
 					</ul>
 				</div>
 				<h4 class="comments-title">Add <span ng-show="presentation.comments.length == 0">first</span> comment</h4>
-				<textarea class="comment form-control" ng-model="presentation.comment" placeholder="some comment..." rows="3"></textarea>
+				<textarea class="comment form-control" ng-model="presentation.comment" placeholder="type some comment..." rows="3"></textarea>
 				<button class="btn default-btn pull-right" ng-click="addComment(presentation.id, presentation.comment)">Add comment</button>
 			</div>
 		</div>
