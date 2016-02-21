@@ -7,5 +7,5 @@ public class Comment {
 
     String presentationId;
     String userId;
-    String commentValue;
+    String comment;
 }

@@ -6,5 +6,5 @@ import lombok.Data;
 public class Rate {
     String userId;
     String presentationId;
-    int rateValue;
+    int rate;
 }
