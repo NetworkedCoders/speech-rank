@@ -28,7 +28,7 @@ public class ConferencesRepository {
     }
 
     public void add(Rate rate) {
-        log.info("Rate added");
+        log.info("Rate added: " + rate.toString());
         Presentation presentation = conferences
                 .flatMap(Conference::getPresentations)
                 .find(prez -> prez.getId().equals(rate.getPresentationId())).get();
@@ -36,7 +36,7 @@ public class ConferencesRepository {
     }
 
     public void add(Comment comment) {
-        log.info("Comment added");
+        log.info("Comment added: " + comment.toString());
         conferences
                 .flatMap(Conference::getPresentations)
                 .find(prez -> prez.getId().equals(comment.getPresentationId()))
@@ -45,7 +45,7 @@ public class ConferencesRepository {
     }
 
     public void add(String year, Conference conf) {
-        log.info("Conference added" + conf.toString());
+        log.info("Conference added: " + conf.toString());
         conferences = conferences.append(conf);
         years.filter(y -> y.getYear().equals(year))
                 .map(y -> y.addConference(conf));
