@@ -21,7 +21,7 @@ import com.google.api.services.youtube.model.PlaylistItemListResponse;
 @Data
 public class Importer {
 
-	String apiKey = "";
+	String apiKey = "xyz";
 
 	private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
 
@@ -94,6 +94,10 @@ public class Importer {
 
 	public javaslang.collection.List<VideoData> importDevoxxUK2015() {
 		return importFromYouTubePlaylist("PLklQqdqnBkPjP1fyt0Y-OF90Bnx_PFo-V");
+	}
+
+	public javaslang.collection.List<VideoData> importHackSummit2016() {
+		return importFromYouTubePlaylist("PL3awhJ17Z2rtmy3r9hXnFtAvdY0rs788e");
 	}
 
 	@Data
