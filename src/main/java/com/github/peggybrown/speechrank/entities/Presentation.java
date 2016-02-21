@@ -1,10 +1,13 @@
 package com.github.peggybrown.speechrank.entities;
 
+import com.github.peggybrown.speechrank.Importer;
 import javaslang.collection.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -17,6 +20,15 @@ public class Presentation {
     private Double rating;
     private List<Rate> rates;
     private List<Comment> comments;
+
+    public Presentation(Importer.VideoData videoData){
+        id = UUID.randomUUID().toString();
+        title = videoData.getTitle();
+        link = "https://youtube.com/embed/"+videoData.getVideoId();
+        rating = 0.0;
+        rates = List.empty();
+        comments = List.empty();
+    }
 
 
     public Double addRate(Rate rate) {
