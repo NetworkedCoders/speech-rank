@@ -2,9 +2,12 @@ package com.github.peggybrown.speechrank;
 
 
 import javaslang.collection.List;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;;
 
-@Value
+
+@Data
+@AllArgsConstructor
 public class Conference {
 
     String id;

@@ -18,7 +18,7 @@ public class Presentation {
 
 
     public Double addRate(Rate rate) {
-        rates.push(rate);
+        rates = rates.append(rate);
         rating = rates.toJavaStream()
                 .mapToInt(Rate::getRateValue)
                 .average()
@@ -27,7 +27,7 @@ public class Presentation {
     }
 
     public Comment addComment(Comment comment) {
-        comments.push(comment);
+       comments = comments.push(comment);
         return comment;
     }
 
