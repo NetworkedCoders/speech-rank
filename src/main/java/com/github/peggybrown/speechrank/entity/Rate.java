@@ -1,4 +1,4 @@
-package com.github.peggybrown.speechrank.entities;
+package com.github.peggybrown.speechrank.entity;
 
 import lombok.Data;
 
