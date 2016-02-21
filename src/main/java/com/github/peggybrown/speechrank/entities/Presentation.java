@@ -24,7 +24,7 @@ public class Presentation {
     public Presentation(Importer.VideoData videoData){
         id = UUID.randomUUID().toString();
         title = videoData.getTitle();
-        link = "https://youtube.com/embed/"+videoData.getVideoId();
+        link = "https://youtube.com/v/"+videoData.getVideoId();
         rating = 0.0;
         rates = List.empty();
         comments = List.empty();
