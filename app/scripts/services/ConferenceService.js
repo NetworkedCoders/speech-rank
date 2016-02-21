@@ -29,11 +29,12 @@
 		    });
 	    };
 
-	    conferenceService.addRating = function(presentationId, rating) {
+	    conferenceService.addRating = function(presentationId, userId, rating) {
 		    return $http({
 			    method: 'POST',
-			    data: {comment: rating,
-				    presentationId: presentationId},
+			    data: {rate: rating,
+				    presentationId: presentationId,
+			        userId: userId},
 			    url: REST_END_POINT + '/api/rating/'
 		    });
 	    };
