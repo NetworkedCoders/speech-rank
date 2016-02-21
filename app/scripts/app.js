@@ -45,7 +45,9 @@
 		    'self',
 		    // Allow loading from our assets domain.  Notice the difference between * and **.
 		    'https://www.youtube.com/**',
-		    'http://www.youtube.com/**'
+		    'http://www.youtube.com/**',
+		    'https://youtube.com/**',
+		    'http://youtube.com'
 	    ]);
     }
 
