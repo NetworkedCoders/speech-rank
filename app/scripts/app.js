@@ -5,7 +5,8 @@
         'ui.router'
     ])
     .config(config)
-    .run(run);
+    .run(run)
+	.constant('REST_END_POINT','http://159.8.109.141:5050');
 
     function config( $urlRouterProvider, $stateProvider, $sceDelegateProvider ) {
         // redirection to home path
@@ -38,12 +39,6 @@
             url: '^*path',
             templateUrl: 'templates/routes/404.html'
         });
-
-        $sceDelegateProvider.resourceUrlWhitelist([
-            'self',
-            'https://www.youtube.com/**',
-            'http://www.youtube.com/**'
-        ]);
     }
 
     function run() {
