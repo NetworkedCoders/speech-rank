@@ -1,11 +1,13 @@
-package com.github.peggybrown.speechrank;
+package com.github.peggybrown.speechrank.entities;
 
 
-import com.google.common.collect.Maps;
+import com.github.peggybrown.speechrank.dtos.ConferenceDto;
+import com.github.peggybrown.speechrank.dtos.YearsConferenceDto;
+import com.github.peggybrown.speechrank.dtos.YearDto;
 import javaslang.collection.List;
 import lombok.extern.java.Log;
 
-import java.util.Map;
+import java.util.stream.Collectors;
 
 @Log
 public class Storage {
@@ -47,13 +49,13 @@ public class Storage {
 
     }
 
-    public List<Year> getYears() {
-        return years;
+    public java.util.List<YearDto> getYears() {
+        return years.toJavaStream().map(y -> new YearDto(y)).collect(Collectors.toList());
     }
 
-    public Conference getConference(String id) {
+    public ConferenceDto getConference(String id) {
         //TODO what to return whe conference not found?
-        return conferences.find(conf -> conf.getId().equals(id)).get();
+        return new ConferenceDto(conferences.find(conf -> conf.getId().equals(id)).get());
     }
 
     public void addYear(String year) {

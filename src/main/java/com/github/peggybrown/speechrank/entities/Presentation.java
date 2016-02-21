@@ -1,4 +1,4 @@
-package com.github.peggybrown.speechrank;
+package com.github.peggybrown.speechrank.entities;
 
 
 import javaslang.collection.List;
