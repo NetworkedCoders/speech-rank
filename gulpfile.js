@@ -21,6 +21,7 @@ var paths = {
         'scripts/libs/angular-ui-router.min.js' // ngRoute
         ],
     html: ['index.html'],
+	fonts: ['fonts/**/'],
     images: ['images/**/'],
     extras: ['.htaccess'],
     templates: ['templates/**/*.html'],
@@ -70,9 +71,9 @@ gulp.task('copy', function() {
     gulp.src(paths.templates, {cwd: bases.application})
         .pipe(gulp.dest(bases.production + 'templates/'));
 
-    // Copy json data
-    gulp.src(paths.json, {cwd: bases.application})
-        .pipe(gulp.dest(bases.production + 'json-data/'));
+    // Copy fonts
+	gulp.src(paths.fonts, {cwd: bases.application})
+		.pipe(gulp.dest(bases.production + 'fonts/'));
 });
 
 gulp.task('watchForChanges', function() {
