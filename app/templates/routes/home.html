@@ -4,19 +4,25 @@
 			<div class="page-header">
 				<h1>Choose conference to display details</h1>
 			</div>
-			<ul class="years">
-				<li class="year" ng-repeat="yearData in yearsArray">
-					<h2>{{yearData.year}}</h2>
-					<ul class="conferences">
-						<li class="conference" ng-repeat="conference in yearData.conferences">
-							<a ui-sref="main.conference({ id: conference.id })">
-								{{conference.name}}
-								<span class="label label-success">{{conference.presentations}}</span>
-							</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
+		</div>
+	</div>
+	<div class="year" ng-repeat="yearData in yearsArray">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="header">{{yearData.year}}</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3" ng-repeat="conference in yearData.conferences">
+				<a ui-sref="main.conference({ id: conference.id })" class="conference">
+					<p class="title">{{conference.name}}<br />
+						<ng-pluralize class="presentations" count="conference.presentations"
+									  when="{'0': 'No presentations.',
+									  '1': '1 presentation.',
+									  'other': '{} presentations.'}"></ng-pluralize>
+					</p>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>

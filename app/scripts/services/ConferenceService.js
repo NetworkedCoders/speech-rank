@@ -1,14 +1,13 @@
 (function () {
     'use strict';
 
-    angular.module('speechRank').factory('ConferenceService', function ( $http, $q ) {
-        
+    angular.module('speechRank').factory('ConferenceService', function ( $http, $q, REST_END_POINT ) {
         var conferenceService = {};
 
         conferenceService.getConferences = function() {
             return $http({
                 method: 'GET',
-                url: '/json-data/conferences.json'
+                url: REST_END_POINT + '/conferences'
             });
         };
 
@@ -16,7 +15,7 @@
             return $http({
                 method: 'GET',
                 data: conferenceId,
-                url: '/json-data/conference' + conferenceId + '.json'
+                url: REST_END_POINT + '/conference'
             });
         };
 
