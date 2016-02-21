@@ -18,17 +18,18 @@
             });
         };
 
-	    conferenceService.addComment = function(comment, presentationId, userId) {
+	    conferenceService.addComment = function(presentationId, userId, comment, username) {
 		    return $http({
 			    method: 'POST',
 			    data: {comment: comment,
 				        userId: userId,
-			            presentationId: presentationId},
+			            presentationId: presentationId,
+			            username: username},
 			    url: REST_END_POINT + '/api/comment/'
 		    });
 	    };
 
-	    conferenceService.addRating = function(rating, presentationId) {
+	    conferenceService.addRating = function(presentationId, rating) {
 		    return $http({
 			    method: 'POST',
 			    data: {comment: rating,

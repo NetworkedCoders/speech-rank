@@ -29,6 +29,34 @@ header {
 	a:focus {
 		text-decoration: none;
 	}
+	ul.navbar-nav {
+		li {
+			padding: 5px;
+			.user {
+				float: left;
+				padding: 7px 10px;
+			}
+			.icon-user-1 {
+				display: block;
+				width: 36px;
+				height: 36px;
+				padding: 6px 7px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				float: left;
+			}
+			.icon-user-1:hover {
+				background: #e6e6e6;
+				border-color: #adadad;
+				color: #333;
+			}
+		}
+	}
+	ul.navbar-nav:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
 }
 
 footer {
@@ -121,6 +149,14 @@ a:active {
 	textarea.comment {
 		width: 100%;
 		margin-bottom: 20px;
+	}
+	.rating {
+		.icon-star-empty {
+			color: #333333;
+		}
+		.icon-star {
+			color: #ec971f;
+		}
 	}
 }
 
