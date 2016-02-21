@@ -5,9 +5,10 @@
         'ui.router'
     ])
     .config(config)
-    .run(run);
+    .run(run)
+	.constant('REST_END_POINT','http://159.8.109.141:5050');
 
-    function config( $urlRouterProvider, $stateProvider ) {
+    function config( $urlRouterProvider, $stateProvider, $sceDelegateProvider ) {
         // redirection to home path
         $urlRouterProvider.when('', '/');
 

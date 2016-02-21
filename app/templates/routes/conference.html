@@ -1,7 +1,26 @@
-<div class="container">
+<div class="content-wrapper container">
 	<div class="row">
 		<div class="col-md-12">
-			<h1>{{conference.name}}</h1>
+			<div class="page-header">
+				<h2>{{conference.name}} presentation list</h2>
+			</div>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="presentation" ng-repeat="presentation in conference.presentations">
+			<div class="col-md-5">
+				<iframe ng-src="{{presentation.link}}" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="col-md-7">
+				<h3 class="title">{{presentation.title}}</h3>
+				<p>Presentation rating: <span class="label label-success">{{presentation.rating}}</span></p>
+				<h4 class="comments-title">Comments</h4>
+				<ul class="comments">
+					<li class="comment" ng-repeat="comment in presentation.comments">
+						<strong>{{comment.author}}</strong>: {{comment.content}}
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

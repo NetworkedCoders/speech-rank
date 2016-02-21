@@ -3,6 +3,7 @@ Web application to rate and comment on speeches from IT conferences
 
 To run front end type:
 
+npm install gulp -g
 npm install gulp
 npm install
 gulp
