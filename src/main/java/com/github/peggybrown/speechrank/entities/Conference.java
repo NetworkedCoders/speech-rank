@@ -1,14 +1,13 @@
-package com.github.peggybrown.speechrank;
+package com.github.peggybrown.speechrank.entities;
+
 
 import javaslang.collection.List;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Data;;
+
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class Conference {
 
     String id;
