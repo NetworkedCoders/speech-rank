@@ -7,5 +7,6 @@ public class Comment {
 
     String presentationId;
     String userId;
+    String username;
     String comment;
 }
