@@ -56,7 +56,7 @@ public class ConferencesRepository {
     }
 
     public java.util.List<YearDto> getYears() {
-        return years.toJavaStream().map(y -> new YearDto(y)).collect(Collectors.toList());
+        return years.toJavaStream().map(YearDto::new).collect(Collectors.toList());
     }
 
     public ConferenceDto getConference(String id) {
