@@ -1,9 +1,11 @@
-package com.github.peggybrown.speechrank.entities;
-
+package com.github.peggybrown.speechrank.entity;
 
 import javaslang.collection.List;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;;
+import lombok.Data;
+
+;
 
 
 @Data

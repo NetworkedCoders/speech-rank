@@ -1,4 +1,4 @@
-package com.github.peggybrown.speechrank;
+package com.github.peggybrown.speechrank.delivery.rest;
 
 import lombok.extern.slf4j.Slf4j;
 
