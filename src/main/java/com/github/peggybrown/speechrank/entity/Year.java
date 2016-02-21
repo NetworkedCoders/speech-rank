@@ -1,9 +1,10 @@
-package com.github.peggybrown.speechrank.entities;
+package com.github.peggybrown.speechrank.entity;
 
+import javaslang.collection.List;
+
+import lombok.Data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javaslang.collection.List;
-import lombok.Data;
 
 @Data
 public class Year {

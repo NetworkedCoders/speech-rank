@@ -1,13 +1,14 @@
-package com.github.peggybrown.speechrank.entities;
+package com.github.peggybrown.speechrank.entity;
 
-import com.github.peggybrown.speechrank.Importer;
+import java.util.UUID;
+
 import javaslang.collection.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+import com.github.peggybrown.speechrank.gateway.Importer;
 
 @Data
 @AllArgsConstructor
