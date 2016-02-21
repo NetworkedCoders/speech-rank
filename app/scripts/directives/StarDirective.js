@@ -7,7 +7,10 @@
 			link: function(scope, element) {
 				$(element).on('mouseover', '.icon-star-empty', function() {
 					var $star = $(this);
-					console.log('star', $star);
+					$star.prevAll().andSelf().removeClass('icon-star-empty').addClass('icon-star');
+				}).on('mouseout', function() {
+					var $wrapper = $(this);
+					$wrapper.find('.icon-star').removeClass('icon-star').addClass('icon-star-empty');
 				});
 			}
 		};
