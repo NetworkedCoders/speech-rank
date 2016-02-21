@@ -1,7 +1,6 @@
 package com.github.peggybrown.speechrank;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,9 +41,10 @@ public class Importer {
 	 */
 	public static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
-	public List<VideoData> importConfitura2015() {
 
-		List<VideoData> videos = new ArrayList<>();
+
+	private javaslang.collection.List<VideoData> importFromYouTubePlaylist(String playlistId) {
+		javaslang.collection.List<VideoData> videos = javaslang.collection.List.empty();
 		try {
 			// This object is used to make YouTube Data API requests. The last
 			// argument is required, but since we don't need anything
@@ -58,18 +58,18 @@ public class Importer {
 			// Define the API request for retrieving search results.
 			YouTube.PlaylistItems.List playlistitems = youtube.playlistItems().list("contentDetails,snippet");
 
-			playlistitems.setPlaylistId("PLVbNBx5Phg3Ct6pIPeWpOW37OH7F8hcMO");
+			playlistitems.setPlaylistId(playlistId);
 			playlistitems.setKey(apiKey);
 			playlistitems.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
 
 			final PlaylistItemListResponse response = playlistitems.execute();
 			final List<PlaylistItem> items = response.getItems();
 			if (items != null) {
-				videos = items.stream()
+				videos = javaslang.collection.List.ofAll(items.stream()
 						.map(item -> new VideoData(item.getContentDetails().getVideoId(),
 								item.getSnippet() != null ? item.getSnippet().getTitle() : "",
 								item.getSnippet() != null ? item.getSnippet().getDescription() : ""))
-						.collect(Collectors.toList());
+						.collect(Collectors.toList()));
 			}
 			return videos;
 		} catch (GoogleJsonResponseException e) {
@@ -81,6 +81,19 @@ public class Importer {
 			t.printStackTrace();
 		}
 		return null;
+
+	}
+
+	public javaslang.collection.List<VideoData> importConfitura2015() {
+		return importFromYouTubePlaylist("PLVbNBx5Phg3Ct6pIPeWpOW37OH7F8hcMO");
+	}
+
+	public javaslang.collection.List<VideoData> importConfitura2014() {
+		return importFromYouTubePlaylist("PLVbNBx5Phg3C_NhQauABRuX8Jr58LKX_u");
+	}
+
+	public javaslang.collection.List<VideoData> importDevoxxUK2015() {
+		return importFromYouTubePlaylist("PLklQqdqnBkPjP1fyt0Y-OF90Bnx_PFo-V");
 	}
 
 	@Data
