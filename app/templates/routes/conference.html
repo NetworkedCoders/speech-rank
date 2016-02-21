@@ -13,16 +13,24 @@
 			</div>
 			<div class="col-md-7">
 				<h3 class="title">{{presentation.title}}</h3>
-				<p>Presentation rating: <span class="label label-success">{{presentation.rating}}</span></p>
+				<p>Presentation rating: <span class="label label-success">{{presentation.rating}}</span> rate presentation
+					<span class="rating star-directive">
+						<i class="icon-star-empty"></i>
+						<i class="icon-star-empty"></i>
+						<i class="icon-star-empty"></i>
+						<i class="icon-star-empty"></i>
+						<i class="icon-star-empty"></i>
+					</span>
+				</p>
 				<h4 class="comments-title">Comments</h4>
 				<ul class="comments">
 					<li class="comment" ng-repeat="comment in presentation.comments">
-						<strong>{{comment.author}}</strong>: {{comment.content}}
+						<strong>{{comment.username}}</strong>: {{comment.comment}}
 					</li>
 				</ul>
 				<h4 class="comments-title">Add comment</h4>
-				<textarea class="comment form-control" ng-model="form.comment" placeholder="some comment..." rows="3"></textarea>
-				<button class="btn default-btn pull-right" ng-click="addComment(presentation.id, 123)">Add comment</button>
+				<textarea class="comment form-control" ng-model="presentation.comment" placeholder="some comment..." rows="3"></textarea>
+				<button class="btn default-btn pull-right" ng-click="addComment(presentation.id, 123, presentation.comment)">Add comment</button>
 			</div>
 		</div>
 	</div>
