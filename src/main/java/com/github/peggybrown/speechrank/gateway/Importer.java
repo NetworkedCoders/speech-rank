@@ -1,4 +1,4 @@
-package com.github.peggybrown.speechrank;
+package com.github.peggybrown.speechrank.gateway;
 
 import java.io.IOException;
 import java.util.List;

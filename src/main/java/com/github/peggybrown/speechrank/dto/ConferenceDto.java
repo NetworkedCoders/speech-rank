@@ -1,9 +1,10 @@
-package com.github.peggybrown.speechrank.dtos;
-
-import com.github.peggybrown.speechrank.entities.Conference;
-import lombok.Data;
+package com.github.peggybrown.speechrank.dto;
 
 import java.util.List;
+
+import lombok.Data;
+
+import com.github.peggybrown.speechrank.entity.Conference;
 
 @Data
 public class ConferenceDto {
