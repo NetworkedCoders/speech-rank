@@ -7,17 +7,35 @@
         conferenceService.getConferences = function() {
             return $http({
                 method: 'GET',
-                url: REST_END_POINT + '/conferences'
+                url: REST_END_POINT + '/api/conferences'
             });
         };
 
         conferenceService.getConference = function(conferenceId) {
             return $http({
                 method: 'GET',
-                data: conferenceId,
-                url: REST_END_POINT + '/conference'
+                url: REST_END_POINT + '/api/conference/'+conferenceId
             });
         };
+
+	    conferenceService.addComment = function(comment, presentationId, userId) {
+		    return $http({
+			    method: 'POST',
+			    data: {comment: comment,
+				        userId: userId,
+			            presentationId: presentationId},
+			    url: REST_END_POINT + '/api/comment/'
+		    });
+	    };
+
+	    conferenceService.addRating = function(rating, presentationId) {
+		    return $http({
+			    method: 'POST',
+			    data: {comment: rating,
+				    presentationId: presentationId},
+			    url: REST_END_POINT + '/api/rating/'
+		    });
+	    };
 
         return conferenceService;
     });

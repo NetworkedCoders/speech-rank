@@ -20,6 +20,9 @@
 						<strong>{{comment.author}}</strong>: {{comment.content}}
 					</li>
 				</ul>
+				<h4 class="comments-title">Add comment</h4>
+				<textarea class="comment form-control" ng-model="form.comment" placeholder="some comment..." rows="3"></textarea>
+				<button class="btn default-btn pull-right" ng-click="addComment(presentation.id, 123)">Add comment</button>
 			</div>
 		</div>
 	</div>
