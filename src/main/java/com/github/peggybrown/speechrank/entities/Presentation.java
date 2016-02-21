@@ -34,7 +34,7 @@ public class Presentation {
     public Double addRate(Rate rate) {
         rates = rates.append(rate);
         rating = rates.toJavaStream()
-                .mapToInt(Rate::getRateValue)
+                .mapToInt(Rate::getRate)
                 .average()
                 .orElse(rating);
         return rating;
