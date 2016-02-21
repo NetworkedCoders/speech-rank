@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 var bases = {
     application: 'app/',
-    production: 'public/'
+    production: '../Web/'
 };
 
 var paths = {
@@ -80,7 +80,6 @@ gulp.task('watchForChanges', function() {
     gulp.watch(bases.application + paths.less, ['styles']);
     gulp.watch(bases.application + 'scripts/**/*.js', ['scripts']);
     gulp.watch(bases.application + '**/*.html', ['copy']);
-    gulp.watch(bases.application + '**/*.json', ['copy']);
 });
 
 gulp.task('default', ['scripts', 'styles', 'copy', 'watchForChanges']);
