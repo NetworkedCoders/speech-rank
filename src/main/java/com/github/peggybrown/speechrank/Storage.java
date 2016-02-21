@@ -10,7 +10,7 @@ public class Storage {
     public void add(Rate rate) {
         log.info("Rate added");
         conferences.toStream()
-                .flatMap(conf -> conf.getPresentations())
+                .flatMap(Conference::getPresentations)
                 .find(prez -> prez.getId().equals(rate.getPresentationId()))
                 .map(prez -> prez.addRate(rate));
     }
@@ -18,7 +18,7 @@ public class Storage {
     public void add(Comment comment) {
         log.info("Comment added");
         conferences.toStream()
-                .flatMap(conf -> conf.getPresentations())
+                .flatMap(Conference::getPresentations)
                 .find(prez -> prez.getId().equals(comment.getPresentationId()))
                 .map(prez -> prez.addComment(comment));
 
