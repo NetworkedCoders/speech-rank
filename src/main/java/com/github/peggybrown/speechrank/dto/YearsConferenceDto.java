@@ -1,8 +1,8 @@
-package com.github.peggybrown.speechrank.dtos;
+package com.github.peggybrown.speechrank.dto;
 
-
-import com.github.peggybrown.speechrank.entities.Conference;
 import lombok.Data;
+
+import com.github.peggybrown.speechrank.entity.Conference;
 
 @Data
 public class YearsConferenceDto {
