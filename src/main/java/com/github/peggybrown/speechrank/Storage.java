@@ -1,9 +1,10 @@
-package com.github.peggybrown.speechrank.entities;
+package com.github.peggybrown.speechrank;
 
 
 import com.github.peggybrown.speechrank.dtos.ConferenceDto;
 import com.github.peggybrown.speechrank.dtos.YearsConferenceDto;
 import com.github.peggybrown.speechrank.dtos.YearDto;
+import com.github.peggybrown.speechrank.entities.*;
 import javaslang.collection.List;
 import lombok.extern.java.Log;
 
