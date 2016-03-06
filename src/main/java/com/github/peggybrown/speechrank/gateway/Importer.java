@@ -21,7 +21,7 @@ import com.google.api.services.youtube.model.PlaylistItemListResponse;
 @Data
 public class Importer {
 
-	String apiKey = "AIzaSyB6NTbez7c-xjqNrXvg4CWM9a6JvzXQB5I";
+	String apiKey = "xyz";
 
 	private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
 
