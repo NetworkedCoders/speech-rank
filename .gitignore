@@ -6,7 +6,7 @@
 # IDE ignore list
 
 /.idea
-
+.iml
 *.class
 speech-rank.iml
 
