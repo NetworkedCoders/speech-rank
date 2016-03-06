@@ -12,7 +12,9 @@ To run front end type
 
 `gulp`
 
-npm run local-web-server
+and
+
+`npm run local-web-server`
 
 
 To run backend
