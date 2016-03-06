@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 var bases = {
     application: 'app/',
-    production: '../Web/'
+    production: 'build/web/'
 };
 
 var paths = {
