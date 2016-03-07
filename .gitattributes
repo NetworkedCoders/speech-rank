@@ -1,0 +1,31 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+
+*.* text eol=lf
+
+*.cs     text diff=csharp
+*.java   text diff=java
+*.less   text
+*.html   text diff=html
+*.css    text
+#js is assembly of web :>
+*.min.js binary
+*.js     text
+*.sql    text
+
+*.gitattributes text
+.gitignore text
+*.md text
+
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.eot binary
+*.ttf binary
+*.woff binary
+*.ica binary
+*.jar binary
