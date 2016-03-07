@@ -1,14 +1,12 @@
 package com.github.peggybrown.speechrank.entity;
 
-import java.util.UUID;
-
+import com.github.peggybrown.speechrank.gateway.Importer;
 import javaslang.collection.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import com.github.peggybrown.speechrank.gateway.Importer;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -22,10 +20,10 @@ public class Presentation {
     private List<Rate> rates;
     private List<Comment> comments;
 
-    public Presentation(Importer.VideoData videoData){
+    public Presentation(Importer.VideoData videoData) {
         id = UUID.randomUUID().toString();
         title = videoData.getTitle();
-        link = "https://youtube.com/v/"+videoData.getVideoId();
+        link = "https://youtube.com/v/" + videoData.getVideoId();
         rating = 0.0;
         rates = List.empty();
         comments = List.empty();
@@ -42,7 +40,7 @@ public class Presentation {
     }
 
     public Comment addComment(Comment comment) {
-       comments = comments.push(comment);
+        comments = comments.push(comment);
         return comment;
     }
 
