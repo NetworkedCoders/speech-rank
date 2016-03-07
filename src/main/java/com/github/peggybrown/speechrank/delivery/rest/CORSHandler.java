@@ -9,13 +9,14 @@ import ratpack.http.MutableHeaders;
 @Slf4j
 public class CORSHandler implements Handler {
 
-	@Override public void handle(final Context ctx) throws Exception {
-		log.info("Adding CORS headers");
-		final MutableHeaders headers = ctx.getResponse().getHeaders();
-		headers.add("Access-Control-Allow-Origin", "*");
-		headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-		headers.add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
-		ctx.next();
-	}
+    @Override
+    public void handle(final Context ctx) throws Exception {
+        log.info("Adding CORS headers");
+        final MutableHeaders headers = ctx.getResponse().getHeaders();
+        headers.add("Access-Control-Allow-Origin", "*");
+        headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+        headers.add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
+        ctx.next();
+    }
 
 }
