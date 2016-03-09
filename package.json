@@ -16,6 +16,7 @@
     "local-web-server": "^1.1.2"
   },
   "scripts" : {
-    "local-web-server": "ws -d build/web"
+    "local-web-server": "ws -d build/web",
+    "gulp": "gulp"
   }
 }
