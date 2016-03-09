@@ -20,3 +20,6 @@ hs_err_pid*
 
 .gradle/
 
+
+# added by GitSavvy
+/build/
