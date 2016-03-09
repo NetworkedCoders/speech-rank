@@ -1,28 +1,32 @@
 # speech-rank
 Web application to rate and comment on speeches from IT conferences
 
-To run front end type
----------------------
+## Project development
 
-`npm install gulp -g`
+### Prerequisites
 
-`npm install gulp`
+-   JDK 7+
+-   Node.js 4+
+-   Gradle 2.11 (optional, ./gradlew will install if missing)
+
+### Install dependencies
 
 `npm install`
 
-`gulp`
+### Build frontend resources
 
-and
+`npm run gulp` will build on-start and watch later changes
+
+### Run frontend server
+
+In a new terminal window run
 
 `npm run local-web-server`
 
-
-To run backend
---------------
+### Build and run backend server
 
 `./gradlew run`
 
-Notes
------
+### Notes
 
 Please note that since we use Google YouTube Data API, an APIKey needs to be provided but must not be stored on GitHub. Therefore it is provided only on VM on koding.com.
