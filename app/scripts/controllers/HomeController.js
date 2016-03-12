@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('speechRank').controller('HomeController', function( $scope, ConferenceService ) {
+    angular.module('speechRank').controller('HomeController', function( $scope, ConferenceService, toastr ) {
         console.log('HomeController loaded..');
 
         $scope.getConferences = function() {
@@ -10,7 +10,7 @@
                     console.log('response', response);
                     $scope.yearsArray = response.data;
                 }).catch(function(error) {
-                    console.error('error', error);
+                    toastr.error(error.data, 'Server Error!');
                 });
         };
 

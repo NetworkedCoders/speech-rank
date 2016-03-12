@@ -1,15 +1,22 @@
 <header>
 	<div class="container">
-	    <div class="navbar-header">
-	    	<a href="#/" class="logo">
-	    		SPEECH <strong>RANK</strong>
-	    	</a>
-	    </div>
-		<nav class="collapse navbar-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><i class="icon-user-1"></i><div class="user">{{user.username}}</div></li>
-				<li><button class="btn btn-default">Logout</button></li>
-			</ul>
+		<nav class="navbar navbar-default">
+		    <div class="navbar-header">
+		    	<a href="#/" class="logo">
+		    		SPEECH <strong>RANK</strong>
+		    	</a>
+		    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	              <span class="sr-only">Toggle navigation</span>
+	              <i class="icon-menu"></i>
+	            </button>
+		    </div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#/">Home</a></li>
+					<li><a href="#/"><i class="icon-user-1"></i>{{user.username}}</a></li>
+					<li><a href="#/">Logout</a></li>
+				</ul>
+			</div>
 		</nav>
 	</div>
 </header>
