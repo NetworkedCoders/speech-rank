@@ -21,6 +21,7 @@ dependencies {
     compile "org.projectlombok:lombok:1.16.6"
     compile 'com.google.api-client:google-api-client:1.21.0'
     compile 'com.google.apis:google-api-services-youtube:v3-rev162-1.21.0'
+    compile 'com.typesafe:config:1.0.2'
     testCompile 'junit:junit:4.12'
 }
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.typesafe.config.ConfigFactory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -21,7 +22,8 @@ import com.google.api.services.youtube.model.PlaylistItemListResponse;
 @Data
 public class Importer {
 
-    String apiKey = "xyz";
+
+    String apiKey;
 
     private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
 
@@ -40,6 +42,11 @@ public class Importer {
      * Define a global instance of the JSON factory.
      */
     public static final JsonFactory JSON_FACTORY = new JacksonFactory();
+
+    public Importer(String apiKey){
+
+        this.apiKey = apiKey;
+    }
 
 
     public javaslang.collection.List<VideoData> importFromYouTubePlaylist(String playlistId) {
