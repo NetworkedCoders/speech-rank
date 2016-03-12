@@ -15,10 +15,13 @@ var paths = {
     scripts: ['scripts/**/*.js', '!scripts/libs/**/*.js'],
     less: ['less/*.less'],
     libs: [
-        'scripts/libs/angular.min.js',          // AngularJS
-        'scripts/libs/angular-animate.min.js',  // ngAnimate
-        'scripts/libs/jquery-2.2.0.min.js',     // jQuery
-        'scripts/libs/angular-ui-router.min.js' // ngRoute
+        'scripts/libs/angular.min.js',              // AngularJS
+        'scripts/libs/angular-animate.min.js',      // ngAnimate
+        'scripts/libs/jquery-2.2.0.min.js',         // jQuery
+        'scripts/libs/angular-ui-router.min.js',    // ngRoute
+        'scripts/libs/loading-bar.min.js',          // Loading animation
+        'scripts/libs/angular-toastr.min.js',       // angular messages
+        'scripts/libs/bootstrap.min.js'             // boostrap
         ],
     html: ['index.html'],
 	fonts: ['fonts/**/'],

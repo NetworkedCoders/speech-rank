@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('speechRank').controller('ConferenceController', function( $scope, $stateParams, ConferenceService ) {
+    angular.module('speechRank').controller('ConferenceController', function( $scope, $stateParams, ConferenceService, toastr ) {
         console.log('ConferenceController loaded..');
 
         var conferenceId = $stateParams.id;
@@ -12,7 +12,7 @@
                     console.log('response', response);
                     $scope.conference = response.data;
                 }).catch(function(error) {
-                    console.error('error', error);
+                    toastr.error(error.data, 'Server Error!');
                 });
         };
 
@@ -23,7 +23,7 @@
 				    .then(function(response) {
 					    console.log('response', response);
 				    }).catch(function(error) {
-					    console.error('error', error);
+					   toastr.error(error.data, 'Server Error!');
 				    });
 		    } else {
 			    console.log('no comment provided!');
@@ -50,7 +50,7 @@
 			    .then(function(response) {
 				    console.log('response', response);
 			    }).catch(function(error) {
-				    console.error('error', error);
+				    toastr.error(error.data, 'Server Error!');
 			    });
 	    };
 
