@@ -42,7 +42,7 @@ public class Importer {
     public static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
 
-    private javaslang.collection.List<VideoData> importFromYouTubePlaylist(String playlistId) {
+    public javaslang.collection.List<VideoData> importFromYouTubePlaylist(String playlistId) {
         javaslang.collection.List<VideoData> videos = javaslang.collection.List.empty();
         try {
             // This object is used to make YouTube Data API requests. The last
