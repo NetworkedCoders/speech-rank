@@ -29,10 +29,17 @@
             controller: 'HomeController'
         })
 
+        // conference page
         .state('main.conference', {
             url: '/conference/:id',
             templateUrl: 'templates/routes/conference.html',
             controller: 'ConferenceController'
+        })
+
+        // about page
+        .state('main.about', {
+            url: '/about',
+            templateUrl: 'templates/routes/about.html'
         })
 
         // MISCELLANEOUS

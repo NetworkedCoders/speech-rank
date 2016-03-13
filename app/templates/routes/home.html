@@ -1,9 +1,17 @@
 <div class="content-wrapper container">
+	<div class="jumbotron">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Welcome to speech rank</h1>
+				<p>Awsome web application to rate and comment on speeches from conferences.</p>
+				<p><a class="btn btn-primary" href="#/about" role="button">Learn more</a></p>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<div class="page-header">
-				<h2>Choose conference to display details</h2>
-			</div>
+			<h2 ng-show="yearsArray.length">Choose conference to display details</h2>
+			<h2 ng-hide="yearsArray.length">No conferences to display right now</h2>
 		</div>
 	</div>
 	<div class="year" ng-repeat="yearData in yearsArray">
