@@ -1,12 +1,5 @@
 package com.github.peggybrown.speechrank.gateway;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestInitializer;
@@ -17,11 +10,17 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.PlaylistItem;
 import com.google.api.services.youtube.model.PlaylistItemListResponse;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class Importer {
 
-    String apiKey = "xyz";
+    String apiKey;
 
     private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
 
@@ -40,6 +39,10 @@ public class Importer {
      * Define a global instance of the JSON factory.
      */
     public static final JsonFactory JSON_FACTORY = new JacksonFactory();
+
+    public Importer(String apiKey) {
+        this.apiKey = apiKey;
+    }
 
 
     private javaslang.collection.List<VideoData> importFromYouTubePlaylist(String playlistId) {
@@ -65,15 +68,15 @@ public class Importer {
             final List<PlaylistItem> items = response.getItems();
             if (items != null) {
                 videos = javaslang.collection.List.ofAll(items.stream()
-                        .map(item -> new VideoData(item.getContentDetails().getVideoId(),
-                                item.getSnippet() != null ? item.getSnippet().getTitle() : "",
-                                item.getSnippet() != null ? item.getSnippet().getDescription() : ""))
-                        .collect(Collectors.toList()));
+                    .map(item -> new VideoData(item.getContentDetails().getVideoId(),
+                        item.getSnippet() != null ? item.getSnippet().getTitle() : "",
+                        item.getSnippet() != null ? item.getSnippet().getDescription() : ""))
+                    .collect(Collectors.toList()));
             }
             return videos;
         } catch (GoogleJsonResponseException e) {
             System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
-                    + e.getDetails().getMessage());
+                + e.getDetails().getMessage());
         } catch (IOException e) {
             System.err.println("There was an IO error: " + e.getCause() + " : " + e.getMessage());
         } catch (Throwable t) {

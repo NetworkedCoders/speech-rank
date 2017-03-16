@@ -18,11 +18,12 @@ import com.github.peggybrown.speechrank.gateway.Importer;
 @Log
 public class ConferencesRepository {
 
-    private Importer importer = new Importer();
+    private Importer importer;
     private List<Conference> conferences;
     private List<Year> years;
 
-    public ConferencesRepository() {
+    public ConferencesRepository(String apiKey) {
+        importer = new Importer(apiKey);
         conferences = List.empty();
         initYears();
     }
