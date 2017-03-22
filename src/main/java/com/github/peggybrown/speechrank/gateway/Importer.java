@@ -1,8 +1,6 @@
 package com.github.peggybrown.speechrank.gateway;
 
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-import com.google.api.client.http.HttpRequest;
-import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -45,17 +43,15 @@ public class Importer {
     }
 
 
-    private javaslang.collection.List<VideoData> importFromYouTubePlaylist(String playlistId) {
+    public javaslang.collection.List<VideoData> importFromYouTubePlaylist(String playlistId) {
         javaslang.collection.List<VideoData> videos = javaslang.collection.List.empty();
         try {
             // This object is used to make YouTube Data API requests. The last
             // argument is required, but since we don't need anything
             // initialized when the HttpRequest is initialized, we override
             // the interface and provide a no-op function.
-            youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
-                public void initialize(HttpRequest request) throws IOException {
-                }
-            }).setApplicationName("andbed-1227").build();
+            youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, request -> {
+            }).setApplicationName("Speech Rank").build();
 
             // Define the API request for retrieving search results.
             YouTube.PlaylistItems.List playlistitems = youtube.playlistItems().list("contentDetails,snippet");
@@ -98,8 +94,16 @@ public class Importer {
         return importFromYouTubePlaylist("PLklQqdqnBkPjP1fyt0Y-OF90Bnx_PFo-V");
     }
 
-    public javaslang.collection.List<VideoData> importHackSummit2016() {
+    public javaslang.collection.List<VideoData> importHackSummit2014() {
         return importFromYouTubePlaylist("PL3awhJ17Z2rtmy3r9hXnFtAvdY0rs788e");
+    }
+
+    public javaslang.collection.List<VideoData> importBoilingFrongs2016() {
+        return importFromYouTubePlaylist("PLVT0blg4rCWAACyuDZKEn1cy1CR4zhz4R");
+    }
+
+    public javaslang.collection.List<VideoData> importScalar2016() {
+        return importFromYouTubePlaylist("PL8NC5lCgGs6Nj6Y2Tg5kNNFepfvLTLPL_");
     }
 
     @Data
