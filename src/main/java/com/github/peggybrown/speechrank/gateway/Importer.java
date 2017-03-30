@@ -78,7 +78,7 @@ public class Importer {
         } catch (Throwable t) {
             t.printStackTrace();
         }
-        return null;
+        return videos;
 
     }
 
