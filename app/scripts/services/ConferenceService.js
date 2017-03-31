@@ -17,13 +17,15 @@
                 url: REST_END_POINT + '/api/conference/'+conferenceId
             });
         };
-        
-        conferenceService.importConference = function(year, name, playlistLink) {
+
+        conferenceService.importConference = function (year, name, playlistId) {
             return $http({
                 method: 'POST',
-                data: {year: year,
+                data: {
+                    year: year,
                     name: name,
-                    playlistLink: playlistLink},
+                    playlistId: playlistId
+                },
                 url: REST_END_POINT + '/api/import/'
             });
         };
