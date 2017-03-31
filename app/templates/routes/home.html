@@ -7,11 +7,18 @@
         </div>
     </div>
     <h4 class="import-title">Import conference</h4>
-    <input type="text" class="comment form-control" ng-model="conference.name" placeholder="Name"/>
-    <input type="text" class="comment form-control" ng-model="conference.year" placeholder="Year"/>
-    <input type="text" class="comment form-control" ng-model="conference.playlistLink" placeholder="Playlist ID"/>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" ng-model="conference.name" placeholder="Boiling Frogs"/></div>
+    <div class="form-group">
+        <label>Year</label>
+        <input type="text" class="form-control" ng-model="conference.year" placeholder="2016"/></div>
+    <div class="form-group">
+        <label>Youtube playlist Id</label>
+        <input type="text" class="form-control" ng-model="conference.playlistId"
+               placeholder="PLVT0blg4rCWAACyuDZKEn1cy1CR4zhz4R"/></div>
     <button class="btn default-btn pull-right"
-            ng-click="importConference(conference.name, conference.year, conference.playlistLink)">Import
+            ng-click="importConference(conference.name, conference.year, conference.playlistId)">Import
     </button>
 
     <div class="year" ng-repeat="yearData in yearsArray">
