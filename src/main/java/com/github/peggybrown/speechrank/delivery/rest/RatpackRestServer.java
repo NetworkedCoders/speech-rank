@@ -3,6 +3,7 @@ package com.github.peggybrown.speechrank.delivery.rest;
 import com.github.peggybrown.speechrank.ConferencesRepository;
 import com.github.peggybrown.speechrank.dto.ConferenceImportDto;
 import com.github.peggybrown.speechrank.entity.Comment;
+import com.github.peggybrown.speechrank.entity.Conference;
 import com.github.peggybrown.speechrank.entity.Rate;
 import ratpack.server.RatpackServer;
 
@@ -36,8 +37,8 @@ public class RatpackRestServer {
                     }))
                 .post("api/import", ctx ->
                     ctx.parse(ConferenceImportDto.class).then(conf -> {
-                        conferencesRepo.importConference(conf);
-                        ctx.render(json(conf));
+                        String id = conferencesRepo.importConference(conf);
+                        ctx.render(json(conferencesRepo.getConference(id)));
                     }))
                 .get("api/conferences", ctx -> ctx.render(json(conferencesRepo.getYears())))
                 .get("api/conference/:id", ctx -> {

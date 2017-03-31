@@ -18,7 +18,7 @@ public class ConferencesRepository {
     private List<Conference> conferences;
     private List<Year> years;
 
-    public ConferencesRepository(String apiKey) {
+    ConferencesRepository(String apiKey) {
         importer = new Importer(apiKey);
         conferences = List.empty();
         initYears();
@@ -41,7 +41,7 @@ public class ConferencesRepository {
 
     }
 
-    public void add(String year, Conference conf) {
+    private void add(String year, Conference conf) {
         log.info("Conference added: " + conf.toString());
         conferences = conferences.append(conf);
         years.filter(y -> y.getYear().equals(year))
@@ -71,13 +71,15 @@ public class ConferencesRepository {
 
     }
 
-    public void initYears() {
+    private void initYears() {
         years = List.of(new Year("2016"), new Year("2015"), new Year("2014"));
     }
 
-    public void importConference(ConferenceImportDto conf) {
-        Conference conference = new Conference(UUID.randomUUID().toString(), conf.getName(), importer.importFromYouTubePlaylist(conf.getPlaylistLink()).map(Presentation::new));
+    public String importConference(ConferenceImportDto conf) {
+        String id = UUID.randomUUID().toString();
+        Conference conference = new Conference(id, conf.getName(), importer.importFromYouTubePlaylist(conf.getPlaylistLink()).map(Presentation::new));
         add(conf.getYear(), conference);
+        return id;
     }
 
 }
