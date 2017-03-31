@@ -14,8 +14,8 @@
                 });
         };
 
-        $scope.importConference = function (newConfYear, newConfName, playlistLink) {
-            if (newConfYear !== '' && newConfName !== '' && playlistLink !== '') {
+        $scope.importConference = function (newConfName, newConfYear, playlistLink) {
+            if (newConfName !== '' && newConfYear !== '' && playlistLink !== '') {
                 ConferenceService.importConference(newConfYear, newConfName, playlistLink)
                     .then(function (response) {
                         console.log('response', response);
