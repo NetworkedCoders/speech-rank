@@ -1,28 +1,36 @@
 <div class="content-wrapper container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-header">
-				<h2>Choose conference to display details</h2>
-			</div>
-		</div>
-	</div>
-	<div class="year" ng-repeat="yearData in yearsArray">
-		<div class="row">
-			<div class="col-md-12">
-				<h3 class="header">{{yearData.year}}</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3" ng-repeat="conference in yearData.conferences">
-				<a ui-sref="main.conference({ id: conference.id })" class="conference">
-					<p class="title">{{conference.name}}<br />
-						<ng-pluralize class="presentations" count="conference.presentations"
-									  when="{'0': 'No presentations.',
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>Choose conference to display details</h2>
+            </div>
+        </div>
+    </div>
+    <h4 class="import-title">Import conference</h4>
+    <input type="text" class="comment form-control" ng-model="conference.name" placeholder="Name"/>
+    <input type="text" class="comment form-control" ng-model="conference.year" placeholder="Year"/>
+    <input type="text" class="comment form-control" ng-model="conference.playlistLink" placeholder="Playlist ID"/>
+    <button class="btn default-btn pull-right"
+            ng-click="importConference(conference.name, conference.year, conference.playlistLink)">Import
+    </button>
+
+    <div class="year" ng-repeat="yearData in yearsArray">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="header">{{yearData.year}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3" ng-repeat="conference in yearData.conferences">
+                <a ui-sref="main.conference({ id: conference.id })" class="conference">
+                    <p class="title">{{conference.name}}<br/>
+                        <ng-pluralize class="presentations" count="conference.presentations"
+                                      when="{'0': 'No presentations.',
 									  '1': '1 presentation.',
 									  'other': '{} presentations.'}"></ng-pluralize>
-					</p>
-				</a>
-			</div>
-		</div>
-	</div>
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

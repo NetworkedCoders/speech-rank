@@ -17,6 +17,16 @@
                 url: REST_END_POINT + '/api/conference/'+conferenceId
             });
         };
+        
+        conferenceService.importConference = function(year, name, playlistLink) {
+            return $http({
+                method: 'POST',
+                data: {year: year,
+                    name: name,
+                    playlistLink: playlistLink},
+                url: REST_END_POINT + '/api/import/'
+            });
+        };
 
 	    conferenceService.addComment = function(presentationId, userId, comment, username) {
 		    return $http({
