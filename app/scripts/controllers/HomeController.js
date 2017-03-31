@@ -14,9 +14,9 @@
                 });
         };
 
-        $scope.importConference = function (newConfName, newConfYear, playlistLink) {
-            if (newConfName !== '' && newConfYear !== '' && playlistLink !== '') {
-                ConferenceService.importConference(newConfYear, newConfName, playlistLink)
+        $scope.importConference = function (newConfName, newConfYear, newConfPlaylistId) {
+            if (newConfName !== '' && newConfYear !== '' && newConfPlaylistId !== '') {
+                ConferenceService.importConference(newConfYear, newConfName, newConfPlaylistId)
                     .then(function (response) {
                         console.log('response', response);
                         console.log($scope.yearsArray.map(function (year) {
