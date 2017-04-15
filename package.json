@@ -19,8 +19,8 @@
         "local-web-server": "ws -d build/web",
         "gulp": "gulp",
         "build": "gulp",
-        "start": "node app.js",
-        "postinstall": "gulp default"
+        "start": "npm install",
+        "postinstall": "npm run local-web-server"
     },
     "engines": {
         "node": "4.1.1"
