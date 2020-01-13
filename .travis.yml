@@ -2,8 +2,3 @@ language: java
 
 jdk:
   - openjdk10
-
-addons:
-  apt:
-    packages:
-      - oracle-java10-installer
