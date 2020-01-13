@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Data
 public class Year {
     private final String year;
+
     @JsonIgnore
     private List<Conference> conferences = List.empty();
 
