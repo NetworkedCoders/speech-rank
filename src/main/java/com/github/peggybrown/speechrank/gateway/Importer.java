@@ -82,28 +82,32 @@ public class Importer {
 
     }
 
-    public javaslang.collection.List<VideoData> importConfitura2015() {
-        return importFromYouTubePlaylist("PLVbNBx5Phg3Ct6pIPeWpOW37OH7F8hcMO");
+    public javaslang.collection.List<VideoData> importConfitura2019() {
+        return importFromYouTubePlaylist("PLVbNBx5Phg3AwVti8rYNqx7965pgfMZWO");
     }
 
-    public javaslang.collection.List<VideoData> importConfitura2014() {
-        return importFromYouTubePlaylist("PLVbNBx5Phg3C_NhQauABRuX8Jr58LKX_u");
+    public javaslang.collection.List<VideoData> importConfitura2018() {
+        return importFromYouTubePlaylist("PLVbNBx5Phg3DkJO00oMB2ETHFmG7RUujm");
     }
 
-    public javaslang.collection.List<VideoData> importDevoxxUK2015() {
-        return importFromYouTubePlaylist("PLklQqdqnBkPjP1fyt0Y-OF90Bnx_PFo-V");
+    public javaslang.collection.List<VideoData> importBoilingFrogs2019() {
+        return importFromYouTubePlaylist("PLVT0blg4rCWCUv3oEMQ12haQkMQ1drefo");
     }
 
-    public javaslang.collection.List<VideoData> importHackSummit2014() {
-        return importFromYouTubePlaylist("PL3awhJ17Z2rtmy3r9hXnFtAvdY0rs788e");
+    public javaslang.collection.List<VideoData> importBoilingFrogs2018() {
+        return importFromYouTubePlaylist("PLVT0blg4rCWCEPTY20ZrZeGNQUD_2khrE");
     }
 
-    public javaslang.collection.List<VideoData> importBoilingFrongs2016() {
-        return importFromYouTubePlaylist("PLVT0blg4rCWAACyuDZKEn1cy1CR4zhz4R");
+    public javaslang.collection.List<VideoData> importScalar2019() {
+        return importFromYouTubePlaylist("PL8NC5lCgGs6MYG0hR_ZOhQLvtoyThURka");
     }
 
-    public javaslang.collection.List<VideoData> importScalar2016() {
-        return importFromYouTubePlaylist("PL8NC5lCgGs6Nj6Y2Tg5kNNFepfvLTLPL_");
+    public javaslang.collection.List<VideoData> importDevConf2019() {
+        return importFromYouTubePlaylist("PL8BUDiR2Y8Ys3DHzQhws4BZng8DjvEwib");
+    }
+
+    public javaslang.collection.List<VideoData> importDevConf2017() {
+        return importFromYouTubePlaylist("PL8BUDiR2Y8Yu3SFzqhRWqDrF9OdejbeV0");
     }
 
     @Data

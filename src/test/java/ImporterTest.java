@@ -12,7 +12,7 @@ public class ImporterTest {
 
     @Test
     public void testImport() {
-        new Importer(apiKey).importConfitura2015().forEach(System.out::println);
+        new Importer(apiKey).importBoilingFrogs2019().forEach(System.out::println);
     }
 
 }
