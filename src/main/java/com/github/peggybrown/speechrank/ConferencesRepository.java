@@ -1,7 +1,9 @@
 package com.github.peggybrown.speechrank;
 
+import java.util.UUID;
 import java.util.stream.Collectors;
 
+import com.github.peggybrown.speechrank.dto.ConferenceImportDto;
 import javaslang.collection.List;
 
 import lombok.extern.java.Log;
@@ -18,11 +20,12 @@ import com.github.peggybrown.speechrank.gateway.Importer;
 @Log
 public class ConferencesRepository {
 
-    private Importer importer = new Importer();
+    private Importer importer;
     private List<Conference> conferences;
     private List<Year> years;
 
-    public ConferencesRepository() {
+    public ConferencesRepository(String apiKey) {
+        importer = new Importer(apiKey);
         conferences = List.empty();
         initYears();
     }
@@ -30,17 +33,17 @@ public class ConferencesRepository {
     public void add(Rate rate) {
         log.info("Rate added: " + rate.toString());
         Presentation presentation = conferences
-                .flatMap(Conference::getPresentations)
-                .find(prez -> prez.getId().equals(rate.getPresentationId())).get();
+            .flatMap(Conference::getPresentations)
+            .find(prez -> prez.getId().equals(rate.getPresentationId())).get();
         presentation.addRate(rate);
     }
 
     public void add(Comment comment) {
         log.info("Comment added: " + comment.toString());
         conferences
-                .flatMap(Conference::getPresentations)
-                .find(prez -> prez.getId().equals(comment.getPresentationId()))
-                .map(prez -> prez.addComment(comment));
+            .flatMap(Conference::getPresentations)
+            .find(prez -> prez.getId().equals(comment.getPresentationId()))
+            .map(prez -> prez.addComment(comment));
 
     }
 
@@ -48,7 +51,7 @@ public class ConferencesRepository {
         log.info("Conference added: " + conf.toString());
         conferences = conferences.append(conf);
         years.filter(y -> y.getYear().equals(year))
-                .map(y -> y.addConference(conf));
+            .map(y -> y.addConference(conf));
     }
 
     public java.util.List<Conference> getConferences() {
@@ -76,4 +79,8 @@ public class ConferencesRepository {
         years = List.of(new Year("2014"), new Year("2015"));
     }
 
+    public void importConference(ConferenceImportDto conf) {
+        Conference conference = new Conference(UUID.randomUUID().toString(), conf.getName(), importer.importFromYouTubePlaylist(conf.getPlaylistLink()).map(Presentation::new));
+        add(conf.getYear(), conference);
+    }
 }
