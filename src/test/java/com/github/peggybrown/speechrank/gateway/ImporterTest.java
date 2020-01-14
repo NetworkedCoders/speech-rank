@@ -1,16 +1,18 @@
 package com.github.peggybrown.speechrank.gateway;
 
-import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import org.junit.Test;
 
+import java.io.File;
+
 public class ImporterTest {
+
+    String apiKey = ConfigFactory.parseFile(new File("api.conf"))
+        .getString("youtube.apiKey");
 
     @Test
     public void testImport() {
-        Config config = ConfigFactory.load();
-        new Importer(config.getString("apiKey"))
-            .importBoilingFrogs2019().forEach(System.out::println);
+        new Importer(apiKey).importBoilingFrogs2019().forEach(System.out::println);
     }
 
 }
