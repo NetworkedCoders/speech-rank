@@ -36,8 +36,8 @@ public class RatpackRestServer {
                     }))
                 .post("api/import", ctx ->
                     ctx.parse(ConferenceImportDto.class).then(conf -> {
-                        conferencesRepo.importConference(conf);
-                        ctx.render(json(conf));
+                        String id = conferencesRepo.importConference(conf);
+                        ctx.render(json(conferencesRepo.getConference(id)));
                     }))
                 .get("api/conferences", ctx -> ctx.render(json(conferencesRepo.getYears())))
                 .get("api/conference/:id", ctx -> {

@@ -8,6 +8,7 @@ buildscript {
 }
 
 apply plugin: "io.ratpack.ratpack-java"
+apply plugin: "io.ratpack.ratpack-groovy"
 apply plugin: "java"
 apply plugin: "idea"
 
@@ -16,17 +17,25 @@ repositories {
 }
 
 dependencies {
-    runtime "org.slf4j:slf4j-simple:1.7.12"
     compile "com.javaslang:javaslang:2.0.0-RC4"
-    compile "org.projectlombok:lombok:1.16.6"
     compile 'com.google.api-client:google-api-client:1.21.0'
-    compile 'com.google.apis:google-api-services-youtube:v3-rev162-1.21.0'
-    compile 'com.typesafe:config:1.0.2'
+    compile 'com.google.apis:google-api-services-youtube:v3-rev182-1.22.0'
+    compile 'org.slf4j:slf4j-api:1.7.30'
+    compileOnly 'org.projectlombok:lombok:1.16.20'
+    annotationProcessor 'org.projectlombok:lombok:1.16.20'
+    compile group: 'com.typesafe', name: 'config', version: '1.4.0'
+    testCompile 'org.slf4j:slf4j-simple:1.7.30'
     testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:3.6.2'
+    testCompile ('org.spockframework:spock-core:1.0-groovy-2.4') {
+        exclude module: "groovy-all"
+    }
+    implementation 'junit:junit:4.12'
+
 }
 
 mainClassName = "com.github.peggybrown.speechrank.Main"
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.11'
+    gradleVersion = '6.0.1'
 }

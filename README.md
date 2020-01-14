@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/NetworkedCoders/speech-rank.svg?branch=master)](https://travis-ci.org/NetworkedCoders/speech-rank)
+
 # speech-rank
 Web application to rate and comment on speeches from IT conferences
 
@@ -30,3 +32,9 @@ In a new terminal window run
 ### Notes
 
 Please note that since we use Google YouTube Data API, an APIKey needs to be provided but must not be stored on GitHub. Therefore it is provided only on VM on koding.com.
+
+### To make the project compile in IntelliJ
+
+1. Installed lombok plugin for Intellij
+2. Enabled annotations processing (Preferences | Build, Execution, Deployment | Compiler | Annotation Processors)
+3. Restart IntelliJ and import dependencies to project

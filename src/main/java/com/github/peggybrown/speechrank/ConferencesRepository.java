@@ -1,21 +1,15 @@
 package com.github.peggybrown.speechrank;
 
-import java.util.UUID;
-import java.util.stream.Collectors;
-
+import com.github.peggybrown.speechrank.dto.ConferenceDto;
 import com.github.peggybrown.speechrank.dto.ConferenceImportDto;
+import com.github.peggybrown.speechrank.dto.YearDto;
+import com.github.peggybrown.speechrank.entity.*;
+import com.github.peggybrown.speechrank.gateway.Importer;
 import javaslang.collection.List;
-
 import lombok.extern.java.Log;
 
-import com.github.peggybrown.speechrank.dto.ConferenceDto;
-import com.github.peggybrown.speechrank.dto.YearDto;
-import com.github.peggybrown.speechrank.entity.Comment;
-import com.github.peggybrown.speechrank.entity.Conference;
-import com.github.peggybrown.speechrank.entity.Presentation;
-import com.github.peggybrown.speechrank.entity.Rate;
-import com.github.peggybrown.speechrank.entity.Year;
-import com.github.peggybrown.speechrank.gateway.Importer;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Log
 public class ConferencesRepository {
@@ -24,7 +18,7 @@ public class ConferencesRepository {
     private List<Conference> conferences;
     private List<Year> years;
 
-    public ConferencesRepository(String apiKey) {
+    ConferencesRepository(String apiKey) {
         importer = new Importer(apiKey);
         conferences = List.empty();
         initYears();
@@ -47,7 +41,7 @@ public class ConferencesRepository {
 
     }
 
-    public void add(String year, Conference conf) {
+    private void add(String year, Conference conf) {
         log.info("Conference added: " + conf.toString());
         conferences = conferences.append(conf);
         years.filter(y -> y.getYear().equals(year))
@@ -68,19 +62,25 @@ public class ConferencesRepository {
     }
 
     public void importAllConferences() {
-        add("2015", new Conference("11", "Confitura", importer.importConfitura2015().map(Presentation::new)));
-        add("2014", new Conference("12", "Confitura", importer.importConfitura2014().map(Presentation::new)));
-        add("2015", new Conference("21", "Devoxx", importer.importDevoxxUK2015().map(Presentation::new)));
-        add("2014", new Conference("31", "Hacksummit", importer.importHackSummit2016().map(Presentation::new)));
+        add("2017", new Conference("11", "DevConf", importer.importDevConf2017().map(Presentation::new)));
+        add("2019", new Conference("12", "DevConf", importer.importDevConf2019().map(Presentation::new)));
+        add("2018", new Conference("21", "Boiling Frogs", importer.importBoilingFrogs2018().map(Presentation::new)));
+        add("2019", new Conference("31", "Boiling Frogs", importer.importBoilingFrogs2019().map(Presentation::new)));
+        add("2019", new Conference("41", "Scalar", importer.importScalar2019().map(Presentation::new)));
+        add("2018", new Conference("51", "Confitura", importer.importConfitura2018().map(Presentation::new)));
+        add("2019", new Conference("51", "Confitura", importer.importConfitura2019().map(Presentation::new)));
 
     }
 
-    public void initYears() {
-        years = List.of(new Year("2014"), new Year("2015"));
+    private void initYears() {
+        years = List.of(new Year("2019"), new Year("2018"), new Year("2017"));
     }
 
-    public void importConference(ConferenceImportDto conf) {
-        Conference conference = new Conference(UUID.randomUUID().toString(), conf.getName(), importer.importFromYouTubePlaylist(conf.getPlaylistLink()).map(Presentation::new));
+    public String importConference(ConferenceImportDto conf) {
+        String id = UUID.randomUUID().toString();
+        Conference conference = new Conference(id, conf.getName(), importer.importFromYouTubePlaylist(conf.getPlaylistLink()).map(Presentation::new));
         add(conf.getYear(), conference);
+        return id;
     }
+
 }

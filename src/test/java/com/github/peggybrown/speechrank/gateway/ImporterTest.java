@@ -10,7 +10,7 @@ public class ImporterTest {
     public void testImport() {
         Config config = ConfigFactory.load();
         new Importer(config.getString("apiKey"))
-            .importConfitura2015().forEach(System.out::println);
+            .importBoilingFrogs2019().forEach(System.out::println);
     }
 
 }

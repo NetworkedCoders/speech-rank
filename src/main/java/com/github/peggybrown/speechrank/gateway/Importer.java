@@ -1,16 +1,6 @@
 package com.github.peggybrown.speechrank.gateway;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.typesafe.config.ConfigFactory;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
-import com.google.api.client.http.HttpRequest;
-import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -18,10 +8,15 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.PlaylistItem;
 import com.google.api.services.youtube.model.PlaylistItemListResponse;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class Importer {
-
 
     String apiKey;
 
@@ -43,8 +38,7 @@ public class Importer {
      */
     public static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
-    public Importer(String apiKey){
-
+    public Importer(String apiKey) {
         this.apiKey = apiKey;
     }
 
@@ -56,10 +50,8 @@ public class Importer {
             // argument is required, but since we don't need anything
             // initialized when the HttpRequest is initialized, we override
             // the interface and provide a no-op function.
-            youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
-                public void initialize(HttpRequest request) throws IOException {
-                }
-            }).setApplicationName("andbed-1227").build();
+            youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, request -> {
+            }).setApplicationName("Speech Rank").build();
 
             // Define the API request for retrieving search results.
             YouTube.PlaylistItems.List playlistitems = youtube.playlistItems().list("contentDetails,snippet");
@@ -72,38 +64,50 @@ public class Importer {
             final List<PlaylistItem> items = response.getItems();
             if (items != null) {
                 videos = javaslang.collection.List.ofAll(items.stream()
-                        .map(item -> new VideoData(item.getContentDetails().getVideoId(),
-                                item.getSnippet() != null ? item.getSnippet().getTitle() : "",
-                                item.getSnippet() != null ? item.getSnippet().getDescription() : ""))
-                        .collect(Collectors.toList()));
+                    .map(item -> new VideoData(item.getContentDetails().getVideoId(),
+                        item.getSnippet() != null ? item.getSnippet().getTitle() : "",
+                        item.getSnippet() != null ? item.getSnippet().getDescription() : ""))
+                    .collect(Collectors.toList()));
             }
             return videos;
         } catch (GoogleJsonResponseException e) {
             System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
-                    + e.getDetails().getMessage());
+                + e.getDetails().getMessage());
         } catch (IOException e) {
             System.err.println("There was an IO error: " + e.getCause() + " : " + e.getMessage());
         } catch (Throwable t) {
             t.printStackTrace();
         }
-        return null;
+        return videos;
 
     }
 
-    public javaslang.collection.List<VideoData> importConfitura2015() {
-        return importFromYouTubePlaylist("PLVbNBx5Phg3Ct6pIPeWpOW37OH7F8hcMO");
+    public javaslang.collection.List<VideoData> importConfitura2019() {
+        return importFromYouTubePlaylist("PLVbNBx5Phg3AwVti8rYNqx7965pgfMZWO");
     }
 
-    public javaslang.collection.List<VideoData> importConfitura2014() {
-        return importFromYouTubePlaylist("PLVbNBx5Phg3C_NhQauABRuX8Jr58LKX_u");
+    public javaslang.collection.List<VideoData> importConfitura2018() {
+        return importFromYouTubePlaylist("PLVbNBx5Phg3DkJO00oMB2ETHFmG7RUujm");
     }
 
-    public javaslang.collection.List<VideoData> importDevoxxUK2015() {
-        return importFromYouTubePlaylist("PLklQqdqnBkPjP1fyt0Y-OF90Bnx_PFo-V");
+    public javaslang.collection.List<VideoData> importBoilingFrogs2019() {
+        return importFromYouTubePlaylist("PLVT0blg4rCWCUv3oEMQ12haQkMQ1drefo");
     }
 
-    public javaslang.collection.List<VideoData> importHackSummit2016() {
-        return importFromYouTubePlaylist("PL3awhJ17Z2rtmy3r9hXnFtAvdY0rs788e");
+    public javaslang.collection.List<VideoData> importBoilingFrogs2018() {
+        return importFromYouTubePlaylist("PLVT0blg4rCWCEPTY20ZrZeGNQUD_2khrE");
+    }
+
+    public javaslang.collection.List<VideoData> importScalar2019() {
+        return importFromYouTubePlaylist("PL8NC5lCgGs6MYG0hR_ZOhQLvtoyThURka");
+    }
+
+    public javaslang.collection.List<VideoData> importDevConf2019() {
+        return importFromYouTubePlaylist("PL8BUDiR2Y8Ys3DHzQhws4BZng8DjvEwib");
+    }
+
+    public javaslang.collection.List<VideoData> importDevConf2017() {
+        return importFromYouTubePlaylist("PL8BUDiR2Y8Yu3SFzqhRWqDrF9OdejbeV0");
     }
 
     @Data
