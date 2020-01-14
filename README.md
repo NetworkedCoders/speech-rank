@@ -35,6 +35,6 @@ Please note that since we use Google YouTube Data API, an APIKey needs to be pro
 
 ### To make the project compile in IntelliJ
 
-1. Installed lombok plugin for Intellij
-2. Enabled annotations processing (Preferences | Build, Execution, Deployment | Compiler | Annotation Processors)
+1. Install Lombok plugin for Intellij
+2. Enable annotations processing (Preferences | Build, Execution, Deployment | Compiler | Annotation Processors)
 3. Restart IntelliJ and import dependencies to project
