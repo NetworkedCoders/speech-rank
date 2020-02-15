@@ -17,12 +17,13 @@ repositories {
 }
 
 dependencies {
+    compile "com.sun.activation:javax.activation:1.2.0"
     compile "com.javaslang:javaslang:2.0.0-RC4"
     compile 'com.google.api-client:google-api-client:1.21.0'
     compile 'com.google.apis:google-api-services-youtube:v3-rev182-1.22.0'
     compile 'org.slf4j:slf4j-api:1.7.30'
-    compileOnly 'org.projectlombok:lombok:1.16.20'
-    annotationProcessor 'org.projectlombok:lombok:1.16.20'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
     compile group: 'com.typesafe', name: 'config', version: '1.4.0'
     testCompile 'org.slf4j:slf4j-simple:1.7.30'
     testCompile 'junit:junit:4.12'
