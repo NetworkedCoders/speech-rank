@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-public class GetConferences {
+public class GetConferencesTest {
 
     @Test
     public void Conferences() throws IOException {
