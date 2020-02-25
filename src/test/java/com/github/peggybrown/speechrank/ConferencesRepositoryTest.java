@@ -1,17 +1,51 @@
 package com.github.peggybrown.speechrank;
 
+import com.github.peggybrown.speechrank.dto.ConferenceImportDto;
+import com.github.peggybrown.speechrank.entity.Conference;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
+import static org.junit.Assert.*;
+
 public class ConferencesRepositoryTest {
+    private ConferencesRepository conferencesRepository;
+
+    @Before
+    public void setUp() {
+        conferencesRepository = new ConferencesRepository("apiKey");
+    }
 
     @Test
     public void importAllConferencesShouldAddAnyConference() {
-        //TODO: check if after importAllConferences() the repository contains any conference
+        //when:
+        conferencesRepository.importAllConferences();
+        List<Conference> conferences = conferencesRepository.getConferences();
+
+        //then:
+        assertFalse(conferences.isEmpty());
     }
 
     @Test
     public void addAndGetConference() {
-        //TODO: check if after importConference(ConferenceImportDto conf) the repository contains this conference
+        //given:
+        String conferenceName = "conference name";
+        ConferenceImportDto conference = new ConferenceImportDto();
+        conference.setYear("1990");
+        conference.setName(conferenceName);
+        conference.setPlaylistLink("https://www.test.com");
+
+        //when:
+        conferencesRepository.importConference(conference);
+        List<Conference> conferences = conferencesRepository.getConferences();
+        boolean doesRepositoryContainConference =
+            conferences.stream()
+                .anyMatch(conf ->
+                conferenceName.equals(conf.getName()));
+
+        //then:
+        assertTrue(doesRepositoryContainConference);
     }
 
     @Test
