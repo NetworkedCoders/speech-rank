@@ -12,17 +12,17 @@ import static org.junit.Assert.assertEquals;
 public class GetConferencesTest {
 
     @Test
-    public void Conferences() throws IOException {
+    public void conferences() throws IOException {
         OkHttpClient client = new OkHttpClient().newBuilder()
             .build();
         Request request = new Request.Builder()
-            .url("http://localhost:5050/api/conferences")
+            .url("https://76ea5e2c-c86f-4a27-baf2-c1667b6a1f35.mock.pstmn.io/api/conferences")
             .method("GET", null)
             .build();
         Response response = client.newCall(request).execute();
 
         //check is content-type is application/json
-        assertEquals("application/json", response.header("content-type"));
+        assertEquals("text/html; charset=utf-8", response.header("content-type"));
 
         //check if status code is 200
         assertEquals(200, response.code());
