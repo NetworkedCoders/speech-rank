@@ -8,7 +8,7 @@ env:
 
 
 before_install:
-    - ./gradlew check
+    - gradlew check
 #    - git clone https://github.com/NetworkedCoders/speech-rank.git
 #    - gradlew run
 #    - npm install
