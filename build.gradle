@@ -32,6 +32,7 @@ dependencies {
         exclude module: "groovy-all"
     }
     implementation 'junit:junit:4.12'
+    implementation("com.squareup.okhttp3:okhttp:4.4.0")
 
 }
 
