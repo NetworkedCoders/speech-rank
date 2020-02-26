@@ -16,10 +16,13 @@ public class GetConferencesTest {
         OkHttpClient client = new OkHttpClient().newBuilder()
             .build();
         Request request = new Request.Builder()
-//            .url("https://76ea5e2c-c86f-4a27-baf2-c1667b6a1f35.mock.pstmn.io/api/conferences")
-            .url("$VALIDATOR_URL/api/conferences")
+            .url("https://76ea5e2c-c86f-4a27-baf2-c1667b6a1f35.mock.pstmn.io/api/conferences")
+//            .url("$VALIDATOR_URL/api/conferences")
             .method("GET", null)
             .build();
+
+        System.out.println("$VALIDATOR_URL");
+        System.out.println($VALIDATOR_URL);
         Response response = client.newCall(request).execute();
 
         //check is content-type is application/json
