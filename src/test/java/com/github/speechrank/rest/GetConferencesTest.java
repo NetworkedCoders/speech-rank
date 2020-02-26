@@ -30,7 +30,7 @@ public class GetConferencesTest {
 
         //check responseBody
         String responseBody = response.body().string();
-        assertEquals("[{\"year\":\"2019\",\"conferences\":[{\"id\":\"12\",\"name\":\"DevConf\",\"presentations\":25},{\"id\":\"31\",\"name\":\"Boiling Frogs\",\"presentations\":25},{\"id\":\"41\",\"name\":\"Scalar\",\"presentations\":16},{\"id\":\"51\",\"name\":\"Confitura\",\"presentations\":25}]},{\"year\":\"2018\",\"conferences\":[{\"id\":\"21\",\"name\":\"Boiling Frogs\",\"presentations\":25},{\"id\":\"51\",\"name\":\"Confitura\",\"presentations\":25}]},{\"year\":\"2017\",\"conferences\":[{\"id\":\"11\",\"name\":\"DevConf\",\"presentations\":25}]}]", responseBody);
+        assertEquals("test [{\"year\":\"2019\",\"conferences\":[{\"id\":\"12\",\"name\":\"DevConf\",\"presentations\":25},{\"id\":\"31\",\"name\":\"Boiling Frogs\",\"presentations\":25},{\"id\":\"41\",\"name\":\"Scalar\",\"presentations\":16},{\"id\":\"51\",\"name\":\"Confitura\",\"presentations\":25}]},{\"year\":\"2018\",\"conferences\":[{\"id\":\"21\",\"name\":\"Boiling Frogs\",\"presentations\":25},{\"id\":\"51\",\"name\":\"Confitura\",\"presentations\":25}]},{\"year\":\"2017\",\"conferences\":[{\"id\":\"11\",\"name\":\"DevConf\",\"presentations\":25}]}]", responseBody);
         //TODO: powyzsza asercje napewno da sie ulepszyc, ale jeszcze nie wiem jak :)
     }
 }
