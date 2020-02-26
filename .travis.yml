@@ -7,7 +7,7 @@ env:
     - GH_URL=https://raw.githubusercontent.com VALIDATOR_URL=http://localhost:5050 URL_TO_VALIDATE=$GH_URL/$TRAVIS_REPO_SLUG/${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
 
 
-after_install:
+after_deploy:
     - ./gradlew assemble
 #    - git clone https://github.com/NetworkedCoders/speech-rank.git
 #    - gradlew run
