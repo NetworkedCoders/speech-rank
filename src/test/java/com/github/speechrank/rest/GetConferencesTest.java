@@ -5,7 +5,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.junit.Test;
 
-
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
