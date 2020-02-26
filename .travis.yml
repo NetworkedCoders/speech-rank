@@ -8,8 +8,8 @@ env:
 
 
 before_install:
-    - ./gradlew run
-    - ./gradlew tasks test
+    skip
+#    - ./gradlew run
 #    - git clone https://github.com/NetworkedCoders/speech-rank.git
 #    - gradlew run
 #    - npm install
@@ -19,7 +19,7 @@ before_install:
 
 
 script:
-    skip
+    - ./gradlew tasks test
 # validate
 #    - echo "Validating $URL_TO_VALIDATE:"
 #    - VALIDATION_OUTPUT=`curl -sS "$VALIDATOR_URL=$URL_TO_VALIDATE"`
