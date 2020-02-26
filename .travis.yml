@@ -16,12 +16,13 @@ before_install:
 
 
 script:
+    skip
     # validate
-    - echo "Validating $URL_TO_VALIDATE:"
-    - VALIDATION_OUTPUT=`curl -sS "$VALIDATOR_URL=$URL_TO_VALIDATE"`
-
-    # print validation errors
-    - echo $VALIDATION_OUTPUT
-
-    # check if the validation output is an empty array, i.e. no errors
-    - test "$VALIDATION_OUTPUT" == "[]"
+#    - echo "Validating $URL_TO_VALIDATE:"
+#    - VALIDATION_OUTPUT=`curl -sS "$VALIDATOR_URL=$URL_TO_VALIDATE"`
+#
+#    # print validation errors
+#    - echo $VALIDATION_OUTPUT
+#
+#    # check if the validation output is an empty array, i.e. no errors
+#    - test "$VALIDATION_OUTPUT" == "[]"
