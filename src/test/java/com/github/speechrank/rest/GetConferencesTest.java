@@ -22,7 +22,7 @@ public class GetConferencesTest {
             .build();
 
         System.out.println("$VALIDATOR_URL");
-        System.out.println($VALIDATOR_URL);
+//        System.out.println($VALIDATOR_URL);
         Response response = client.newCall(request).execute();
 
         //check is content-type is application/json
