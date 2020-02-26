@@ -9,9 +9,9 @@ env:
 
 before_install:
     - git clone https://github.com/NetworkedCoders/speech-rank.git
-    - ./gradlew run
-    - npm install
-    - npm run gulp
+#    - ./gradlew run
+#    - npm install
+#    - npm run gulp
 
 
 
