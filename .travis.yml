@@ -31,4 +31,4 @@ script:
 #    - test "$VALIDATION_OUTPUT" == "[]"
 
 after_failure:
-    -cat "file:///home/travis/build/NetworkedCoders/speech-rank/build/reports/tests/test/index.html"
+    -cat file:///home/travis/build/NetworkedCoders/speech-rank/build/reports/tests/test/index.html
