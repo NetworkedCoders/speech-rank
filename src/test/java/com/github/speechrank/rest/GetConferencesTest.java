@@ -16,8 +16,8 @@ public class GetConferencesTest {
         OkHttpClient client = new OkHttpClient().newBuilder()
             .build();
         Request request = new Request.Builder()
-//            .url("http://localhost:5050/api/conferences")
-            .url("$VALIDATOR_URL/api/conferences")
+            .url("http://localhost:5050/api/conferences")
+//            .url("$VALIDATOR_URL/api/conferences")
             .method("GET", null)
             .build();
 

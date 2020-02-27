@@ -29,3 +29,6 @@ script:
 #
 #    # check if the validation output is an empty array, i.e. no errors
 #    - test "$VALIDATION_OUTPUT" == "[]"
+
+after_failure:
+    -cat "file:///home/travis/build/NetworkedCoders/speech-rank/build/reports/tests/test/index.html"
