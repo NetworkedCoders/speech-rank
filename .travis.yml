@@ -1,4 +1,51 @@
 language: java
-
+#dist: trusty
+#sudo: false
 jdk:
-  - openjdk9
+    - openjdk9
+env:
+    - GH_URL=https://raw.githubusercontent.com VALIDATOR_URL=http://localhost:5050 URL_TO_VALIDATE=$GH_URL/$TRAVIS_REPO_SLUG/${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
+
+
+before_install:
+    skip
+#    - ./gradlew run
+#    - git clone https://github.com/NetworkedCoders/speech-rank.git
+#    - gradlew run
+#    - npm install
+#    - npm run gulp
+#   test1
+
+
+
+script:
+    - ./gradlew tasks test
+      #    apply plugin: 'java'
+
+#        test {
+#        testLogging {
+#        events "failed"
+#        exceptionFormat "short"
+#
+#        debug {
+#        events "started", "skipped", "failed"
+#        exceptionFormat "full"
+#        }
+#        info.events = ["failed", "skipped"]
+#        }
+#        }
+# validate
+#    - echo "Validating $URL_TO_VALIDATE:"
+#    - VALIDATION_OUTPUT=`curl -sS "$VALIDATOR_URL=$URL_TO_VALIDATE"`
+#
+#    # print validation errors
+#    - echo $VALIDATION_OUTPUT
+#
+#    # check if the validation output is an empty array, i.e. no errors
+#    - test "$VALIDATION_OUTPUT" == "[]"
+
+after_failure:
+    skip
+#    -cat file:///home/travis/build/NetworkedCoders/speech-rank/build/reports/tests/test/index.html
+
+
