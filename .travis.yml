@@ -22,18 +22,18 @@ script:
     - ./gradlew tasks test
       #    apply plugin: 'java'
 
-        test {
-        testLogging {
-        events "failed"
-        exceptionFormat "short"
-
-        debug {
-        events "started", "skipped", "failed"
-        exceptionFormat "full"
-        }
-        info.events = ["failed", "skipped"]
-        }
-        }
+#        test {
+#        testLogging {
+#        events "failed"
+#        exceptionFormat "short"
+#
+#        debug {
+#        events "started", "skipped", "failed"
+#        exceptionFormat "full"
+#        }
+#        info.events = ["failed", "skipped"]
+#        }
+#        }
 # validate
 #    - echo "Validating $URL_TO_VALIDATE:"
 #    - VALIDATION_OUTPUT=`curl -sS "$VALIDATOR_URL=$URL_TO_VALIDATE"`
