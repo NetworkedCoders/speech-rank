@@ -46,7 +46,7 @@ public class InMemoryConferencesRepositoryTest {
         ConferenceImportDto conference = new ConferenceImportDto();
         conference.setYear("1990");
         conference.setName(conferenceName);
-        conference.setPlaylistLink("https://www.test.com");
+        conference.setPlaylistId("https://www.test.com");
 
         //when:
         conferencesRepository.importConference(conference);
