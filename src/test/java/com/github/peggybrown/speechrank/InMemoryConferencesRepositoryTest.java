@@ -1,7 +1,10 @@
 package com.github.peggybrown.speechrank;
 
 import com.github.peggybrown.speechrank.dto.ConferenceImportDto;
+import com.github.peggybrown.speechrank.entity.Comment;
 import com.github.peggybrown.speechrank.entity.Conference;
+import com.github.peggybrown.speechrank.entity.Presentation;
+import com.github.peggybrown.speechrank.entity.Rate;
 import com.github.peggybrown.speechrank.gateway.Importer;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,14 +42,19 @@ public class InMemoryConferencesRepositoryTest {
         assertFalse(conferences.isEmpty());
     }
 
-    @Test
-    public void addAndGetConference() {
-        //given:
+    private ConferenceImportDto prepareConference() {
         String conferenceName = "conference name";
         ConferenceImportDto conference = new ConferenceImportDto();
         conference.setYear("1990");
         conference.setName(conferenceName);
         conference.setPlaylistId("https://www.test.com");
+        return conference;
+    }
+
+    @Test
+    public void addAndGetConference() {
+        //given:
+        ConferenceImportDto conference = prepareConference();
 
         //when:
         conferencesRepository.importConference(conference);
@@ -54,7 +62,7 @@ public class InMemoryConferencesRepositoryTest {
         boolean doesRepositoryContainConference =
             conferences.stream()
                 .anyMatch(conf ->
-                conferenceName.equals(conf.getName()));
+                conference.getName().equals(conf.getName()));
 
         //then:
         assertTrue(doesRepositoryContainConference);
@@ -62,11 +70,79 @@ public class InMemoryConferencesRepositoryTest {
 
     @Test
     public void addRateToPresentationTest() {
-        //TODO: check if after addRate(Rate rate) the presentation has this rate
+        //given:
+        Importer.VideoData videoData = new Importer.VideoData("videoId", "videoTitle", "videoDescription");
+        ConferenceImportDto conference = prepareConference();
+        when(importerMock.importFromYouTubePlaylist(conference.getPlaylistId()))
+            .thenReturn(javaslang.collection.List.of(videoData));
+        conferencesRepository = new InMemoryConferencesRepository(importerMock);
+        conferencesRepository.importConference(conference);
+        Presentation presentation = getPresentation(conference.getName(), videoData.getTitle());
+        Rate rate = prepareRate(presentation);
+
+        //when:
+        conferencesRepository.add(rate);
+        boolean doesPresentationContainsRate =
+            getPresentation(conference.getName(), videoData.getTitle())
+                .getRates()
+                .toJavaStream()
+                .anyMatch(streamRate ->
+                    rate.getRate() == streamRate.getRate()
+                        && rate.getUserId().equals(streamRate.getUserId()));
+
+        //then:
+        assertTrue(doesPresentationContainsRate);
+    }
+
+    private Rate prepareRate(Presentation presentation) {
+        Rate rate = new Rate();
+        rate.setUserId("user id");
+        rate.setRate(4);
+        rate.setPresentationId(presentation.getId());
+        return rate;
     }
 
     @Test
     public void addCommentToPresentationTest() {
-        //TODO: check if after addComment(Comment comment) the presentation has this comment
+        //given:
+        Importer.VideoData videoData = new Importer.VideoData("videoId", "videoTitle", "videoDescription");
+        ConferenceImportDto conference = prepareConference();
+        when(importerMock.importFromYouTubePlaylist(conference.getPlaylistId()))
+            .thenReturn(javaslang.collection.List.of(videoData));
+        conferencesRepository = new InMemoryConferencesRepository(importerMock);
+        conferencesRepository.importConference(conference);
+        Presentation presentation = getPresentation(conference.getName(), videoData.getTitle());
+        Comment comment = prepareComment(presentation);
+
+        //when:
+        conferencesRepository.add(comment);
+        boolean doesPresentationContainsComment =
+            getPresentation(conference.getName(), videoData.getTitle())
+                .getComments()
+                .toJavaStream()
+                .anyMatch(comm -> comment.getComment().equals(comm.getComment()));
+
+        //then:
+        assertTrue(doesPresentationContainsComment);
+    }
+
+    private Comment prepareComment(Presentation presentation) {
+        Comment comment = new Comment();
+        comment.setComment("comment content");
+        comment.setPresentationId(presentation.getId());
+        comment.setUserId("user id");
+        comment.setUsername("user name");
+        return comment;
+    }
+
+    private Presentation getPresentation(String conferenceName, String videoDataTitle) {
+        return conferencesRepository.getConferences()
+                .stream()
+                .filter(conf -> conferenceName.equals(conf.getName()))
+                .map(Conference::getPresentations)
+                .flatMap(javaslang.collection.List::toJavaStream)
+                .filter(prez -> videoDataTitle.equals(prez.getTitle()))
+                .findAny()
+                .get();
     }
 }
