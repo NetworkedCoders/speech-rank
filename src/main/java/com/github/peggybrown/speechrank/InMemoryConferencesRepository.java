@@ -93,7 +93,7 @@ public class InMemoryConferencesRepository implements ConferencesRepository {
     @Override
     public String importConference(ConferenceImportDto conf) {
         String id = UUID.randomUUID().toString();
-        Conference conference = new Conference(id, conf.getName(), importer.importFromYouTubePlaylist(conf.getPlaylistLink()).map(
+        Conference conference = new Conference(id, conf.getName(), importer.importFromYouTubePlaylist(conf.getPlaylistId()).map(
             Presentation::new));
         add(conf.getYear(), conference);
         return id;

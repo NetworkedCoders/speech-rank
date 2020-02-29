@@ -6,5 +6,5 @@ import lombok.Data;
 public class ConferenceImportDto {
     String year;
     String name;
-    String playlistLink;
+    String playlistId;
 }
