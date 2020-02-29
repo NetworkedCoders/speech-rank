@@ -9,12 +9,12 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class ConferencesRepositoryTest {
-    private ConferencesRepository conferencesRepository;
+public class InMemoryConferencesRepositoryTest {
+    private InMemoryConferencesRepository conferencesRepository;
 
     @Before
     public void setUp() {
-        conferencesRepository = new ConferencesRepository("apiKey");
+        conferencesRepository = new InMemoryConferencesRepository();
     }
 
     @Test
