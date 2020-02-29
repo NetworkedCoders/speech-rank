@@ -2,19 +2,31 @@ package com.github.peggybrown.speechrank;
 
 import com.github.peggybrown.speechrank.dto.ConferenceImportDto;
 import com.github.peggybrown.speechrank.entity.Conference;
+import com.github.peggybrown.speechrank.gateway.Importer;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class InMemoryConferencesRepositoryTest {
     private InMemoryConferencesRepository conferencesRepository;
+    private Importer importerMock;
 
     @Before
     public void setUp() {
-        conferencesRepository = new InMemoryConferencesRepository();
+        importerMock = mock(Importer.class);
+        when(importerMock.importDevConf2017()).thenReturn(javaslang.collection.List.empty());
+        when(importerMock.importDevConf2019()).thenReturn(javaslang.collection.List.empty());
+        when(importerMock.importBoilingFrogs2018()).thenReturn(javaslang.collection.List.empty());
+        when(importerMock.importBoilingFrogs2019()).thenReturn(javaslang.collection.List.empty());
+        when(importerMock.importScalar2019()).thenReturn(javaslang.collection.List.empty());
+        when(importerMock.importConfitura2018()).thenReturn(javaslang.collection.List.empty());
+        when(importerMock.importConfitura2019()).thenReturn(javaslang.collection.List.empty());
+        when(importerMock.importFromYouTubePlaylist(any())).thenReturn(javaslang.collection.List.empty());
+        conferencesRepository = new InMemoryConferencesRepository(importerMock);
     }
 
     @Test
