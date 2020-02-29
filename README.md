@@ -8,7 +8,7 @@ Web application to rate and comment on speeches from IT conferences
 ### Prerequisites
 
 -   JDK 7+
--   Node.js 4+
+-   Node.js (4 < version < 12)
 -   Gradle 2.11 (optional, ./gradlew will install if missing)
 
 ### Install dependencies

@@ -9,6 +9,7 @@
 .iml
 *.class
 speech-rank.iml
+api.conf
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

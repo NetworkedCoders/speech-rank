@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "io.ratpack:ratpack-gradle:1.2.0"
+        classpath "io.ratpack:ratpack-gradle:1.7.6"
     }
 }
 
@@ -14,13 +14,14 @@ apply plugin: "idea"
 
 repositories {
     jcenter()
+    google()
 }
 
 dependencies {
     compile "com.sun.activation:javax.activation:1.2.0"
     compile "com.javaslang:javaslang:2.0.0-RC4"
-    compile 'com.google.api-client:google-api-client:1.21.0'
-    compile 'com.google.apis:google-api-services-youtube:v3-rev182-1.22.0'
+    compile 'com.google.api-client:google-api-client:1.30.8'
+    compile 'com.google.apis:google-api-services-youtube:v3-rev221-1.25.0'
     compile 'org.slf4j:slf4j-api:1.7.30'
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
@@ -28,15 +29,19 @@ dependencies {
     testCompile 'org.slf4j:slf4j-simple:1.7.30'
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:3.6.2'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.3.0'
     testCompile ('org.spockframework:spock-core:1.0-groovy-2.4') {
         exclude module: "groovy-all"
     }
-    implementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.6.0'
+}
 
+test {
+    useJUnitPlatform()
 }
 
 mainClassName = "com.github.peggybrown.speechrank.Main"
-
 task wrapper(type: Wrapper) {
     gradleVersion = '6.0.1'
 }
