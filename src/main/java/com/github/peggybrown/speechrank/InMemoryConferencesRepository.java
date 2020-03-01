@@ -6,11 +6,9 @@ import com.github.peggybrown.speechrank.dto.YearDto;
 import com.github.peggybrown.speechrank.entity.*;
 import com.github.peggybrown.speechrank.gateway.Importer;
 import com.google.inject.Inject;
-import com.typesafe.config.ConfigFactory;
 import javaslang.collection.List;
 import lombok.extern.java.Log;
 
-import java.io.File;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -22,11 +20,8 @@ public class InMemoryConferencesRepository implements ConferencesRepository {
     private List<Year> years;
 
     @Inject
-    InMemoryConferencesRepository() {
-        String apiKey = ConfigFactory.parseFile(new File("api.conf"))
-            .getString("youtube.apiKey");
-
-        importer = new Importer(apiKey);
+    InMemoryConferencesRepository(Importer importer) {
+        this.importer = importer;
         conferences = List.empty();
         initYears();
         importAllConferences();
@@ -83,7 +78,6 @@ public class InMemoryConferencesRepository implements ConferencesRepository {
         add("2019", new Conference("41", "Scalar", importer.importScalar2019().map(Presentation::new)));
         add("2018", new Conference("51", "Confitura", importer.importConfitura2018().map(Presentation::new)));
         add("2019", new Conference("51", "Confitura", importer.importConfitura2019().map(Presentation::new)));
-
     }
 
     private void initYears() {
@@ -98,5 +92,4 @@ public class InMemoryConferencesRepository implements ConferencesRepository {
         add(conf.getYear(), conference);
         return id;
     }
-
 }

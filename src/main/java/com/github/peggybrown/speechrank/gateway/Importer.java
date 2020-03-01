@@ -8,9 +8,11 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.PlaylistItem;
 import com.google.api.services.youtube.model.PlaylistItemListResponse;
+import com.typesafe.config.ConfigFactory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,8 +40,9 @@ public class Importer {
      */
     public static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
-    public Importer(String apiKey) {
-        this.apiKey = apiKey;
+    public Importer() {
+        this.apiKey = ConfigFactory.parseFile(new File("api.conf"))
+            .getString("youtube.apiKey");
     }
 
 
