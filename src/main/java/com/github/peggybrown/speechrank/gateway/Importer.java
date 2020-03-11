@@ -46,7 +46,7 @@ public class Importer {
     }
 
 
-    public javaslang.collection.List<VideoData> importFromYouTubePlaylist(String playlistId) {
+    public javaslang.collection.List<VideoData> importFromYouTubePlaylist(String playlistId){
         javaslang.collection.List<VideoData> videos = javaslang.collection.List.empty();
         try {
             // This object is used to make YouTube Data API requests. The last
@@ -85,31 +85,31 @@ public class Importer {
 
     }
 
-    public javaslang.collection.List<VideoData> importConfitura2019() {
+    public javaslang.collection.List<VideoData> importConfitura2019(){
         return importFromYouTubePlaylist("PLVbNBx5Phg3AwVti8rYNqx7965pgfMZWO");
     }
 
-    public javaslang.collection.List<VideoData> importConfitura2018() {
+    public javaslang.collection.List<VideoData> importConfitura2018(){
         return importFromYouTubePlaylist("PLVbNBx5Phg3DkJO00oMB2ETHFmG7RUujm");
     }
 
-    public javaslang.collection.List<VideoData> importBoilingFrogs2019() {
+    public javaslang.collection.List<VideoData> importBoilingFrogs2019(){
         return importFromYouTubePlaylist("PLVT0blg4rCWCUv3oEMQ12haQkMQ1drefo");
     }
 
-    public javaslang.collection.List<VideoData> importBoilingFrogs2018() {
+    public javaslang.collection.List<VideoData> importBoilingFrogs2018(){
         return importFromYouTubePlaylist("PLVT0blg4rCWCEPTY20ZrZeGNQUD_2khrE");
     }
 
-    public javaslang.collection.List<VideoData> importScalar2019() {
+    public javaslang.collection.List<VideoData> importScalar2019(){
         return importFromYouTubePlaylist("PL8NC5lCgGs6MYG0hR_ZOhQLvtoyThURka");
     }
 
-    public javaslang.collection.List<VideoData> importDevConf2019() {
+    public javaslang.collection.List<VideoData> importDevConf2019(){
         return importFromYouTubePlaylist("PL8BUDiR2Y8Ys3DHzQhws4BZng8DjvEwib");
     }
 
-    public javaslang.collection.List<VideoData> importDevConf2017() {
+    public javaslang.collection.List<VideoData> importDevConf2017(){
         return importFromYouTubePlaylist("PL8BUDiR2Y8Yu3SFzqhRWqDrF9OdejbeV0");
     }
 
