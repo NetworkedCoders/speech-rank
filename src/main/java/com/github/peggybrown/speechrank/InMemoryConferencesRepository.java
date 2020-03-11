@@ -20,7 +20,7 @@ public class InMemoryConferencesRepository implements ConferencesRepository {
     private static final List<Year> YEARS = initYears();
 
     @Inject
-    InMemoryConferencesRepository(Importer importer){
+    InMemoryConferencesRepository(Importer importer) {
         this.importer = importer;
         conferences = List.empty();
         importAllConferences();

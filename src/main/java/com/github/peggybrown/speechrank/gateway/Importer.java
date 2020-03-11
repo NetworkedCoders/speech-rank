@@ -40,7 +40,7 @@ public class Importer {
      */
     public static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
-    public Importer(){
+    public Importer() {
         this.apiKey = ConfigFactory.parseFile(new File("api.conf"))
             .getString("youtube.apiKey");
     }
