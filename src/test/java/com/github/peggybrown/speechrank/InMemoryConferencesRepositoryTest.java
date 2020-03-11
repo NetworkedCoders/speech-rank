@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class InMemoryConferencesRepositoryTest {
@@ -39,7 +39,9 @@ public class InMemoryConferencesRepositoryTest {
         List<Conference> conferences = conferencesRepository.getConferences();
 
         //then:
-        assertFalse(conferences.isEmpty());
+        assertThat(conferences)
+            .isNotNull()
+            .isNotEmpty();
     }
 
     private ConferenceImportDto prepareConference() {
@@ -59,13 +61,12 @@ public class InMemoryConferencesRepositoryTest {
         //when:
         conferencesRepository.importConference(conference);
         List<Conference> conferences = conferencesRepository.getConferences();
-        boolean doesRepositoryContainConference =
-            conferences.stream()
-                .anyMatch(conf ->
-                conference.getName().equals(conf.getName()));
 
         //then:
-        assertTrue(doesRepositoryContainConference);
+        assertThat(conferences)
+            .isNotNull()
+            .extracting(Conference::getName)
+            .contains(conference.getName());
     }
 
     @Test
@@ -82,16 +83,12 @@ public class InMemoryConferencesRepositoryTest {
 
         //when:
         conferencesRepository.add(rate);
-        boolean doesPresentationContainsRate =
-            getPresentation(conference.getName(), videoData.getTitle())
-                .getRates()
-                .toJavaStream()
-                .anyMatch(streamRate ->
-                    rate.getRate() == streamRate.getRate()
-                        && rate.getUserId().equals(streamRate.getUserId()));
+        Presentation downloadedPresentation = getPresentation(conference.getName(), videoData.getTitle());
 
         //then:
-        assertTrue(doesPresentationContainsRate);
+        assertThat(downloadedPresentation.getRates())
+            .isNotNull()
+            .contains(rate);
     }
 
     private Rate prepareRate(Presentation presentation) {
@@ -116,14 +113,12 @@ public class InMemoryConferencesRepositoryTest {
 
         //when:
         conferencesRepository.add(comment);
-        boolean doesPresentationContainsComment =
-            getPresentation(conference.getName(), videoData.getTitle())
-                .getComments()
-                .toJavaStream()
-                .anyMatch(comm -> comment.getComment().equals(comm.getComment()));
+        Presentation downloadedPresentation = getPresentation(conference.getName(), videoData.getTitle());
 
         //then:
-        assertTrue(doesPresentationContainsComment);
+        assertThat(downloadedPresentation.getComments())
+            .extracting(Comment::getComment)
+            .contains(comment.getComment());
     }
 
     private Comment prepareComment(Presentation presentation) {
