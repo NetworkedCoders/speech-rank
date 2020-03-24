@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="User Paths - Shopping" parallel="tests" thread-count="2">
+
+    <listeners>
+        <listener class-name="utils.AnnotationTransformer"/>
+    </listeners>
+
+    <test name="Shopping process - Firefox">
+        <parameter name="browser" value="FIREFOX"/>
+        <classes>
+            <class name="tests.Functional.SuccessfulImport"/>
+            <class name="tests.Functional.AddComment"/>
+            <class name="tests.Functional.SuccessfulPurchase"/>
+            <class name="tests.Security.DDTTests"/>
+            <class name="tests.Performance.PageLoad"/>
+        </classes>
+    </test>
+
+    <test name="Shopping process - Chrome">
+        <parameter name="browser" value="CHROME"/>
+        <classes>
+            <class name="tests.Functional.SuccessfulImport"/>
+            <class name="tests.Functional.AddComment"/>
+            <class name="tests.Functional.SuccessfulPurchase"/>
+            <class name="tests.Security.DDTTests"/>
+            <class name="tests.Performance.PageLoad"/>
+        </classes>
+    </test>
+
+</suite>
